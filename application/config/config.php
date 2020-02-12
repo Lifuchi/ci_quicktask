@@ -327,7 +327,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'informatikaits2016rifka';
 
 /*
 |--------------------------------------------------------------------------
@@ -524,3 +524,16 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+
+function my_load($class) {
+
+    if (strpos($class, 'CI_') !== 0) {
+        if (is_readable(APPPATH . 'core' . DIRECTORY_SEPARATOR . $class . '.php' )) {
+            require_once (APPPATH . 'core' . DIRECTORY_SEPARATOR . $class . '.php');
+        }
+    }
+
+}
+
+spl_autoload_register('my_load');
