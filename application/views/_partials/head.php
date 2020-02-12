@@ -51,7 +51,7 @@
   <!-- <link rel="stylesheet" href="assets/stylesheets/theme-custom.css"> -->
 
   <!-- Head Libs -->
-  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/vendor/modernizr/modernizr.js">
+  <script src="<?php echo base_url(); ?>assets/vendor/modernizr/modernizr.js"></script>
 
   <!-- <script src="assets/vendor/modernizr/modernizr.js"></script> -->
 
