@@ -6,12 +6,16 @@ class Auth extends MY_MainController {
 	public function logged_in_check(){
 	if ($this->session->userdata("logged_in")) {
 		// redirect("admin");
-			if($this->session->userdata("JOB_LEVEL") == "Admin"){
-					redirect("admin");
+			if($this->session->userdata("T_ROLE") == "Admin"){
+					// redirect("admin");
+					redirect("Dashboard");
+
 				}else {
-			$nip = $this->encryption->encrypt($this->session->userdata("NIP"));
-					$nip = base64_encode($nip);
-					redirect("pegawai/".$nip);
+			// $nip = $this->encryption->encrypt($this->session->userdata("NIP"));
+					// $nip = base64_encode($nip);
+					// redirect("pegawai/".$nip);
+					redirect("client");
+
 				}
 	}
 }
@@ -38,17 +42,23 @@ class Auth extends MY_MainController {
 			$this->session->set_userdata($this->auth->get_data());
 			$this->session->set_userdata("logged_in", true);
 			// redirect to dashboard
-					if($this->session->userdata("JOB_LEVEL") == "Admin"){
-						redirect("admin");
+					if($this->session->userdata("T_ROLE") == "Admin"){
+						// redirect("admin");
+						redirect("Dashboard");
+
 					}else {
-						$nip = $this->encryption->encrypt($this->session->userdata("NIP"));
-						$nip = base64_encode($nip);
-							redirect("pegawai/".$nip);
+						// $nip = $this->encryption->encrypt($this->session->userdata("NIP"));
+						// $nip = base64_encode($nip);
+							// redirect("pegawai/".$nip);
+							redirect("client");
+
 					}
 		}
 	}
 
-	$this->load->view("pages-signin");
+	$this->load->model('Auth_model');
+	$data['content'] = $this->Auth_model->getList();
+	$this->load->view("pages-signin", $data);
 
 }
 
@@ -58,4 +68,11 @@ class Auth extends MY_MainController {
 	redirect("auth");
 }
 
+	public function try(){
+		$this->load->model('Auth_model');
+		$data['content'] = $this->Auth_model->getList();
+		// echo $data;
+		$this->load->view("pages-signin", $data);
+
+}
 }

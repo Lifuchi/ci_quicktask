@@ -54,6 +54,15 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['Dashboard'] = 'dashboard';
-$route['Objective'] = 'dashboard';
+$route['okr'] = 'okr';
 $route['Key_Feature'] = 'dashboard';
 $route['Activity'] = 'dashboard';
+
+// $route['okr'] = 'dashboard';
+
+
+// $route['Activity'] = 'auth/try';
+
+
+$route['Admin'] = 'dashboard';
+$route['Client'] = 'dashboard';

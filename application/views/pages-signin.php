@@ -18,7 +18,7 @@
 						<h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
 					</div>
 					<div class="panel-body">
-						<form action="<?php echo site_url('Dashboard');?>" method="post">
+						<!-- <form action="" method="post">
 							<div class="form-group mb-lg">
 								<label>Username</label>
 								<div class="input-group input-group-icon">
@@ -52,18 +52,60 @@
 										<input id="RememberMe" name="rememberme" type="checkbox"/>
 										<label for="RememberMe">Remember Me</label>
 									</div> -->
-								</div>
+								<!-- </div>
 								<div class="col-sm-4 text-right">
 									<button type="submit" class="btn btn-primary hidden-xs">Sign In</button>
 									<button type="submit" class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign In</button>
 								</div>
-							</div>
+							</div> -->
 
-							<span class="mt-lg mb-lg line-thru text-center text-uppercase">
+							<!-- <span class="mt-lg mb-lg line-thru text-center text-uppercase"> -->
 								<!-- <span>or</span> -->
-							</span>
+							<!-- </span> -->
 
-						</form>
+						<!-- </form>  -->
+
+						<div class="login-form">
+                  <?php $error = $this->session->flashdata("error"); ?>
+                  <div class="alert alert-<?php echo $error ? 'warning' : 'info' ?> alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?php echo $error ? $error : 'Enter your Team and password' ?>
+                  </div>
+
+                    <form id="sign" onsubmit="test()" action="" method="post" >
+                      <?php $error = form_error("username", "<p class='text-danger'>", '</p>'); ?>
+                        <div class="form-group <?php echo $error ? 'has-error' : '' ?>">
+
+														<label>Team</label>
+
+														<select
+																type="text"
+																id="team-list"
+																class="form-control"
+																name="username">
+
+																<option value="option1">Pilih</option>
+														<?php foreach ($content->field_data() as $field): ?>
+														<?php endforeach ?>
+																<?php foreach ($content->result_array() as $key){ ?>
+																			<option value="<?php echo $key['T_ID'] ?>"><?php echo $key['T_NAME'] ?></option>
+																<?php } ?>
+														</select>
+
+                            <!-- <input type="text" class="form-control" placeholder="team" name="username"> -->
+                        </div>
+
+                        <?php $error = form_error("password", "<p class='text-danger'>", '</p>'); ?>
+                        <div class="form-group <?php echo $error ? 'has-error' : '' ?>">
+                            <label>Password</label>
+                            <input type="password" class="form-control" placeholder="Password" name="password">
+                        </div>
+													<div class="col-sm-4 text-right">
+												                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+												<div>
+                    </form>
+                </div>
+
 					</div>
 				</div>
 
@@ -83,6 +125,14 @@
 
 		<!-- Theme Initialization Files -->
 		<script src="assets/javascripts/theme.init.js"></script>
+
+		<script>
+		function test(){
+				document.getElementById('sign').action = '<?php echo site_url('Auth');?>';
+		}
+
+
+		</script>
 
 	</body><img src="http://www.ten28.com/fref.jpg">
 </html>

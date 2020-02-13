@@ -47,7 +47,7 @@ class MY_MainController extends CI_Controller {
 			$access = is_array($this->access) ?
 				$this->access :
 				explode(",", $this->access);
-			if (in_array($this->session->userdata("JOB_LEVEL"), array_map("trim", $access)) ) {
+			if (in_array($this->session->userdata("T_ROLE"), array_map("trim", $access)) ) {
 				return true;
 			}
 
