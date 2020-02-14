@@ -60,7 +60,7 @@
 
 
 		<!-- Examples -->
-    <script src="<?php echo base_url(); ?>assets/javascripts/dashboard/examples.dashboard.js"></script>
+    <!-- <script src="<?php echo base_url(); ?>assets/javascripts/dashboard/examples.dashboard.js"></script> -->
 
 		<!-- <script src="assets/javascripts/dashboard/examples.dashboard.js"></script> -->
 

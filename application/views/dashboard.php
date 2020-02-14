@@ -59,14 +59,16 @@
 										<a href="#" class="fa fa-caret-down"></a>
 										<a href="#" class="fa fa-times"></a>
 									</div>
-									<h2 class="panel-title">Network Overall</h2>
+									<h2 class="panel-title"><?php echo $this->session->userdata("T_NAME")?></h2>
+									<p class="panel-subtitle"><a/> View Project </a></p>
+
 								</header>
 								<div class="panel-body">
 
 									<div id='progressbar' class="progress light m-md">
 
 										<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-													<?php echo $done?>
+
 										</div>
 										<!-- <progress id="myProgress" value="100" max="100"></progress> -->
 									</div>
