@@ -55,6 +55,14 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['Dashboard'] = 'dashboard';
 $route['okr'] = 'okr';
+$route['okr/add'] = 'okr/add';
+$route['okr/added'] = 'okr/added';
+
+$route['ht'] = 'dashboard/allActivity';
+$route['ht2'] = 'dashboard/doneActivity';
+
+
+
 $route['Key_Feature'] = 'dashboard';
 $route['Activity'] = 'dashboard';
 

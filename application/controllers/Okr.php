@@ -3,26 +3,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Okr extends MY_MainController {
 	protected $access = "Admin";
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index()
-	{
-		// $this->load->view('welcome_message');
-    $this->load->view('page-okr');
 
+  public function __construct(){
+		 parent::__construct();
+		 // Load model
+		 $this->load->model('Okr_model');
 	}
+
+  public function index()
+  {
+    // $this->load->view('welcome_message');
+    $this->load->view('page-okr');
+  }
+
+  public function add()
+  {
+    // $this->load->view('welcome_message');
+    $this->load->view('page-okr-add');
+  }
+
+  public function added()
+  {
+    $o = $this->input->post('objective');
+    $team = $this->session->userdata('T_ID');
+
+    $start = $this->input->post('start');
+    $end = $this->input->post('end');
+
+    // $namav = $this->input->post('Key Feature');
+    // $namav = $this->input->post('Activity');
+		$data = array(
+			'OBJECTIVE' => $o,
+      'T_ID' => $team
+			// 'Key Feature' => $kf,
+			// 'Activity' => $a
+			);
+		$this->Okr_model->insert($data, 'qt_objective');
+		// redirect('dashboard');
+    redirect('okr/add');
+
+  }
+
+
 
 }

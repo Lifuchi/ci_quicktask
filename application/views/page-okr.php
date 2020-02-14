@@ -67,7 +67,8 @@
 								<div class="panel-body">
 
 									<!-- <h2 class="panel-title">OKR</h2> -->
-									<button onsubmit="">Add OKR</button>
+
+									<a href=<?php echo site_url('okr/add')?> > <button type="button">Add OKR</button> </a>
 
 									<!-- Flot: Basic -->
 
