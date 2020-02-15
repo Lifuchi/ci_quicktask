@@ -52,52 +52,187 @@
 					</header>
 
 						<div class="row">
-						<div class="col-md-6">
+
+							<?php foreach ($network->result_array() as $key): ?>
+								<?php
+								if($key['done']== 0 && $key['alls'] == 0 ){
+									$ht = 0;
+								}else{
+									$ht = round((int)$key['done']/(int)$key['alls']*100 , 2);
+								}
+								?>
+
+							<div class="col-md-2">
+								<section class="panel" >
+									<header class="panel-heading bg-danger" style="height : 150px">
+										<div class="panel-heading-icon">
+											<!-- <i class="fa fa-globe"></i> -->
+											<h2> Network</h2>
+										</div>
+									</header>
+									<div class="panel-body text-center" >
+										<h4 class="text-semibold mt-sm text-center" style="height : 30px"> Network Overall Progress</h4>
+										<div class="panel-body">
+											<div id='progressbar' class="progress light">
+												<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
+															<?php echo $ht ?>%
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+						<?php endforeach ?>
+
+							<?php foreach ($content->result_array() as $key): ?>
+
+								<?php
+								if($key['done']== 0 && $key['alls'] == 0 ){
+									$ht = 0;
+								}else{
+									$ht = round((int)$key['done']/(int)$key['alls']*100, 2);
+								}
+								?>
+
+
+							<div class="col-md-2">
+								<section class="panel" >
+									<header class="panel-heading bg-primary" style="height : 150px">
+										<div class="panel-heading-icon">
+											<!-- <i class="fa fa-globe"></i> -->
+											<h2><?php echo $key['T_USER']?></h2>
+										</div>
+									</header>
+									<div class="panel-body text-center" >
+										<h4 class="text-semibold mt-sm text-center" style="height : 30px"> <?php echo $key['T_SINGKATAN']?></h4>
+										<div class="panel-body">
+											<div id='progressbar' class="progress light">
+												<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
+															<?php echo $ht ?>%
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+
+						<?php endforeach ?>
+
+						<div class="col-lg-12">
+						<?php foreach ($content->result_array() as $key): ?>
 							<section class="panel">
 								<header class="panel-heading">
 									<div class="panel-actions">
 										<a href="#" class="fa fa-caret-down"></a>
 										<a href="#" class="fa fa-times"></a>
 									</div>
-									<h2 class="panel-title"><?php echo $this->session->userdata("T_NAME")?></h2>
-									<p class="panel-subtitle"><a/> View Project </a></p>
+									<h2 class="panel-title"><?php echo $key['T_NAME']?></h2>
+
+									<?php
+									// if($this->session->userdata("T_NAME") == $key['T_NAME'] ){
+										echo '<p class="panel-subtitle"><a/> View Project </a></p>';
+									// }
+									?>
+
+									<?php
+									if($key['done']== 0 && $key['alls'] == 0 ){
+										$ht = 0;
+									}else{
+										$ht = round((int)$key['done']/(int)$key['alls']*100,2);
+									}
+									?>
 
 								</header>
 								<div class="panel-body">
-
 									<div id='progressbar' class="progress light m-md">
-
-										<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-
+										<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
+													<?php echo $ht ?>%
 										</div>
-										<!-- <progress id="myProgress" value="100" max="100"></progress> -->
 									</div>
-
-									<script>
-
-									// script chart
-
-									</script>
-
-
-									<!-- Flot: Basic -->
-
-									<!-- <div class="chart chart-md" id="flotDashBasic"></div> -->
-									<script>
-
-									// script chart
-
-									</script>
-
 								</div>
 							</section>
+                <?php endforeach ?>
 						</div>
 
+						<?php foreach ($objective->result_array() as $key): ?>
+							<!-- <div class="col-md-12 col-lg-12 col-xl-6">
+								<section class="panel panel-horizontal">
+									<header class="panel-heading bg-primary">
+										<div class="panel-heading-icon"> -->
+											<!-- <i class="fa fa-music"></i> -->
+												<!-- <h6><?php //echo $key['T_SINGKATAN']?> </h6>
+										</div>
+									</header> -->
+									<!-- <div class="panel-body p-lg">
+										<h3 class="text-semibold mt-sm"><?php echo $key['OBJECTIVE']?></h3> -->
+										<!-- <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes.</p> -->
+									<!-- </div> -->
+								<!-- </section> -->
+							<!-- </div> -->
+							<?php
+							if($key['done']== 0 && $key['alls'] == 0 ){
+								$ht = 0;
+							}else{
+								$ht = round((int)$key['done']/(int)$key['alls']*100,2);
+							}
+							?>
+
+							<div class="col-md-6">
+								<section class="panel" >
+									<header class="panel-heading bg-primary" >
+										<!-- <div class="panel-heading-icon"> -->
+											<!-- <i class="fa fa-globe"></i> -->
+											<h4><?php echo $key['T_SINGKATAN']?></h4>
+										<!-- </div> -->
+									</header>
+									<div class="panel-body text-center" >
+										<h4 class="text-semibold mt-sm text-center"> <?php echo $key['OBJECTIVE']?></h4>
+										<div class="panel-body">
+											<div id='progressbar' class="progress light">
+												<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
+															<?php echo $ht ?>%
+												</div>
+											</div>
+
+											<div class="row show-grid">
+												<div class="col-md-4"><span class="show-grid-block"><h4>Target</h4> <h4><?php echo $key['alls']?></h4></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h4>In Progress</h4> <h4><?php echo ((int)$key['alls']- (int)$key['done'])?></h4></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h4>Completed</h4> <h4><?php echo $key['done']?></h4></span></div>
+											</div>
+
+										</div>
+									</div>
+								</section>
+							</div>
+						<?php endforeach ?>
+						</div>
+
+
+
+						<!-- <div class="col-md-2">
+							<section class="panel panel-horizontal">
+								<header class="panel-heading bg-primary">
+									<div class="panel-heading-icon">
+										<i class="fa fa-music"></i>
+									</div>
+								</header>
+								<div class="panel-body p-lg">
+									<h3 class="text-semibold mt-sm">Simple Block Title</h3>
+									<p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes.</p>
+								</div>
+
+								<header class="panel-heading bg-primary">
+									<div class="panel-heading-icon">
+										<i class="fa fa-music"></i>
+									</div>
+								</header>
+								<div class="panel-body p-lg">
+									<h3 class="text-semibold mt-sm">Simple Block Title</h3>
+									<p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes.</p>
+								</div>
+							</section>
+						</div> -->
 					</div>
-
-					<!-- start: page -->
-
-					<!-- end: page -->
 				</section>
 			</div>
 
@@ -114,21 +249,16 @@
 		<script>
 
 		$( document ).ready(function() {
-
-			// alert(x);
-    	// console.log(x);
-			///activity progress 1 departemen
-
-			var y = <?php echo $all; ?>;
-			var x = <?php echo $done; ?>;
-			// alert(y);
-			var xy = parseInt(x)/parseInt(y)*100;
-			// var xy = 100;
-			console.log(xy);
-					$( "#progressbar2" ).css('width', xy + '%').attr('aria-valuenow', xy);
-					$('#progressbar2').text(xy+'%');
-
-
+			// var y = <?php //echo $all; ?>;
+			// var x = <?php// echo $done; ?>;
+			// // alert(y);
+			// var xy = parseInt(x)/parseInt(y)*100;
+			// // var xy = 100;
+			// console.log(xy);
+			// 		$( "#progressbar2" ).css('width', xy + '%').attr('aria-valuenow', xy);
+			// 		$('#progressbar2').text(xy+'%');
+			//
+			//
 		});
 
 		function myFunction() {

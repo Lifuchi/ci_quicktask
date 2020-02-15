@@ -26,6 +26,8 @@ class MY_MainController extends CI_Controller {
 			// here we check the role of the user
 			if (! $this->permission_check()) {
 				die("<h4>Access denied</h4>");
+				// redirect("auth");
+
 
       }
 			// if user try to access logged in page

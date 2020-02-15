@@ -9,12 +9,13 @@ class Auth extends MY_MainController {
 			if($this->session->userdata("T_ROLE") == "Admin"){
 					// redirect("admin");
 					redirect("Dashboard");
-
 				}else {
 			// $nip = $this->encryption->encrypt($this->session->userdata("NIP"));
 					// $nip = base64_encode($nip);
 					// redirect("pegawai/".$nip);
-					redirect("client");
+					// redirect("client");
+					redirect("Dashboard");
+
 
 				}
 	}
@@ -30,6 +31,7 @@ class Auth extends MY_MainController {
 		$this->load->model('Auth_model', 'auth');
 		// check the username & password of user
 		$status = $this->auth->validate();
+		
 		if ($status == ERR_INVALID_USERNAME) {
 			$this->session->set_flashdata("error", "Username is invalid");
 		}
@@ -50,7 +52,9 @@ class Auth extends MY_MainController {
 						// $nip = $this->encryption->encrypt($this->session->userdata("NIP"));
 						// $nip = base64_encode($nip);
 							// redirect("pegawai/".$nip);
-							redirect("client");
+							// redirect("client");
+							redirect("Dashboard");
+
 
 					}
 		}
@@ -68,11 +72,10 @@ class Auth extends MY_MainController {
 	redirect("auth");
 }
 
-	public function try(){
-		$this->load->model('Auth_model');
-		$data['content'] = $this->Auth_model->getList();
-		// echo $data;
-		$this->load->view("pages-signin", $data);
-
-}
+// 	public function try(){
+// 		$this->load->model('Auth_model');
+// 		$data['content'] = $this->Auth_model->getList();
+// 		// echo $data;
+// 		$this->load->view("pages-signin", $data);
+// }
 }

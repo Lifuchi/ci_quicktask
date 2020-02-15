@@ -14,13 +14,16 @@ class Dashboard extends MY_MainController {
 	public function index()
 	{
 		// $this->load->view('welcome_message');
-
-		$allact = $this->Dashboard_model->allActivity();
+		// $allact = $this->Dashboard_model->allActivity();
 		// echo '<script>alert("'.$all.'")</script>';
-		$doneact = $this->Dashboard_model->doneActivity();
+		// $doneact = $this->Dashboard_model->doneActivity();
+		// $doneact = $this->Dashboard_model->doneActivity();
+		$data['content'] =  $this->Dashboard_model->getProgressBar();
+		$data['network'] =  $this->Dashboard_model->getNetworkOverall();
+		$data['objective'] =  $this->Dashboard_model->getObjective();
 
-		$data['all'] = $allact;
-		$data['done'] = $doneact;
+		// $data['all'] = $allact;
+		// $data['done'] = $doneact;
     $this->load->view('dashboard',$data);
 
 	}
