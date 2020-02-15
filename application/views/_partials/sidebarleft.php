@@ -27,7 +27,6 @@
                 <span>OKR</span>
               </a>
               <ul class="nav nav-children">
-
                 <li>
                   <a href=<?php echo site_url('okr');?>>
                      Objective

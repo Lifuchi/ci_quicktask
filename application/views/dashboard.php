@@ -66,12 +66,12 @@
 								<section class="panel" >
 									<header class="panel-heading bg-danger" style="height : 150px">
 										<div class="panel-heading-icon">
-											<!-- <i class="fa fa-globe"></i> -->
 											<h2> Network</h2>
+											<!-- <i class="fa fa-globe"></i> -->
 										</div>
 									</header>
 									<div class="panel-body text-center" >
-										<h4 class="text-semibold mt-sm text-center" style="height : 30px"> Network Overall Progress</h4>
+										<h5 class="text-semibold mt-sm text-center" style="height : 30px">  Network Overall Progress</h5>
 										<div class="panel-body">
 											<div id='progressbar' class="progress light">
 												<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
@@ -130,7 +130,7 @@
 
 									<?php
 									// if($this->session->userdata("T_NAME") == $key['T_NAME'] ){
-										echo '<p class="panel-subtitle"><a/> View Project </a></p>';
+										echo '<p class="panel-subtitle"><a href ='.site_url('divisi/'.$key['T_ID'].'').' > View Project </a></p>';
 									// }
 									?>
 
@@ -177,7 +177,7 @@
 							}
 							?>
 
-							<div class="col-md-6">
+							<div class="col-md-4">
 								<section class="panel" >
 									<header class="panel-heading bg-primary" >
 										<!-- <div class="panel-heading-icon"> -->
@@ -185,9 +185,9 @@
 											<h4><?php echo $key['T_SINGKATAN']?></h4>
 										<!-- </div> -->
 									</header>
-									<div class="panel-body text-center" >
-										<h4 class="text-semibold mt-sm text-center"> <?php echo $key['OBJECTIVE']?></h4>
-										<div class="panel-body">
+									<div class="panel-body text-center"  >
+										<h4 class="text-semibold mt-sm text-center" style="height : 50px"> <?php echo $key['OBJECTIVE']?></h4>
+										<div class="panel-body" >
 											<div id='progressbar' class="progress light">
 												<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
 															<?php echo $ht ?>%
@@ -195,9 +195,9 @@
 											</div>
 
 											<div class="row show-grid">
-												<div class="col-md-4"><span class="show-grid-block"><h4>Target</h4> <h4><?php echo $key['alls']?></h4></span></div>
-												<div class="col-md-4"><span class="show-grid-block"><h4>In Progress</h4> <h4><?php echo ((int)$key['alls']- (int)$key['done'])?></h4></span></div>
-												<div class="col-md-4"><span class="show-grid-block"><h4>Completed</h4> <h4><?php echo $key['done']?></h4></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>Target</h5> <h3><?php echo $key['alls']?></h3></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>In Progress</h5> <h3><?php echo ((int)$key['alls']- (int)$key['done'])?></h3></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>Completed</h5> <h3><?php echo $key['done']?></h3></span></div>
 											</div>
 
 										</div>

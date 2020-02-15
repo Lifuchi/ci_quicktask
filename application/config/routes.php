@@ -58,13 +58,13 @@ $route['okr'] = 'okr';
 $route['okr/add'] = 'okr/add';
 $route['okr/added'] = 'okr/added';
 
-$route['ht'] = 'dashboard/allActivity';
-$route['ht2'] = 'dashboard/doneActivity';
+$route['divisi/(:any)'] = 'divisi/index/$1';
 
 
-
-$route['Key_Feature'] = 'dashboard';
-$route['Activity'] = 'dashboard';
+// $route['ht'] = 'dashboard/allActivity';
+// $route['ht2'] = 'dashboard/doneActivity';
+// $route['Key_Feature'] = 'dashboard';
+// $route['Activity'] = 'dashboard';
 
 // $route['okr'] = 'dashboard';
 

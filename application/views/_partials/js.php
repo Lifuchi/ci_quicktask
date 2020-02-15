@@ -44,6 +44,8 @@
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-datatables-bs3/assets/js/datatables.js"></script>
 
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-autosize/jquery.autosize.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendor/jquery-datatables/extras/TableTools/js/dataTables.tableTools.min.js"></script>
+
     <script src="<?php echo base_url(); ?>assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
 
 		<!-- Theme Base, Components and Settings -->
@@ -65,4 +67,6 @@
 		<!-- <script src="assets/javascripts/dashboard/examples.dashboard.js"></script> -->
 
     <!-- Examples -->
+    <script src="<?php echo base_url(); ?>assets/javascripts/tables/examples.datatables.default.js"></script>
+    <script src="<?php echo base_url(); ?>assets/javascripts/tables/examples.datatables.row.with.details.js"></script>
     <script src="<?php echo base_url(); ?>assets/javascripts/tables/examples.datatables.editable.js"></script>
