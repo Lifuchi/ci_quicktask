@@ -26,7 +26,7 @@ class Divisi_model extends CI_Model {
     // LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
     // WHERE te.T_ID = ?";
 
-    $query2 = "SELECT  t.`TA_NAME` AS TASK , o.`OBJECTIVE` , t.`TA_PROJECTTASK` AS 'PROJEC TASK' , t.TA_TARGET AS TARGET , CASE t.`TA_STATUS` WHEN '0' THEN 'Active' WHEN '1' THEN 'Completed' WHEN t.`TA_STATUS` >0 AND t.`TA_STATUS` < 1 THEN 'In Progress' END AS `STATUS` FROM qt_team te LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID` JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID` WHERE te.T_ID = ?";
+ $query2 = "SELECT  t.`TA_NAME` AS TASK , o.`OBJECTIVE` , t.`TA_PROJECTTASK` AS 'PROJEC TASK' , t.TA_STATUS ,t.TA_TARGET AS TARGET , CASE t.`TA_STATUS` WHEN '0' THEN 'To Do' WHEN '1' THEN 'Done' WHEN (t.`TA_STATUS` > 0 AND t.`TA_STATUS`) < 1 THEN 'On Doing' END AS `STATUS` , t.`TA_UPDATE` as 'LAST UPDATE' FROM qt_team te LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID` JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID` WHERE te.T_ID = 1";
 		$data = $this->db->query($query2, $id);
 		return $data;
 	}
