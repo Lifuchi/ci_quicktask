@@ -12,11 +12,7 @@
 			<header class="header">
 
 				<?php $this->load->view("_partials/header.php") ?>
-
-
 				<div class="header-right">
-
-
 
 					<span class="separator"></span>
 
@@ -40,7 +36,7 @@
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
 								<li>
-									<a href="index.html">
+									<!-- <a href="index.html"> -->
 										<i class="fa fa-home"></i>
 									</a>
 								</li>
