@@ -14,17 +14,19 @@ class Okr_model extends CI_Model {
       parent::__construct();
   }
 
-
 	public function insert($data,$table){
     $this->db->insert($table, $data);
-    // $this->db->insert($table, $data[2]);
-    // $this->db->insert($table, $data[3]);
 	}
 	public function insertTask($data,$table){
 
 		$this->db->insert($table, $data);
-		// $this->db->insert($table, $data[2]);
-		// $this->db->insert($table, $data[3]);
+
+	}
+
+	public function updateTask($data,$table, , $id){
+		$this->db->where('TASK_ID', $id);
+	   $this->db->update($table, $data);
+
 	}
 
 }

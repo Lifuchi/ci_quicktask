@@ -78,10 +78,12 @@
 											<?php foreach ($key as $idnya => $key1): ?>
 												<td> <?php echo $key1 ; ?></td>
 												<?php
+												if($idnya == 'TASK_ID'){
+													$idtask = $key1;
+												}
 												// echo "<script>console.log('apakah masuk');</script>";
 												if ($idnya == 'PROJECT TASK'){
 													// echo "<script>console.log('apakah masuk2');</script>";
-
 													if($key1 == 'Qualitativ'){
 														$nilai = 1;
 													}
@@ -92,11 +94,11 @@
 											<?php if ($this->session->userdata('T_ID') == $idteam ) { ?>
 												<?php if ($nilai == 1){
 													?>
-													<th><a href = "#modalStatus2" class=" modal-with-form btn btn-default btn-danger">Change Status</a></th>
+													<th><a name = <?php echo $idtask?> href = "#modalStatus2" class=" modal-with-form btn btn-default btn-danger">Change Status</a></th>
 													<?php
 												}else{
 													?>
-													<th><a href = "#modalStatus" class=" modal-with-form btn btn-default btn-primary">Change Status</a></th>
+													<th><a name = <?php echo $idtask?> href = "#modalStatus" class=" modal-with-form btn btn-default btn-primary">Change Status</a></th>
 
 													<?php
 												}?>
@@ -131,6 +133,16 @@
 											</header>
 											<div class="panel-body">
 												<form method="post" action="" onsubmit="test3()" id="demo-form3" class="form-horizontal mb-lg" novalidate="novalidate">
+
+
+													<!-- <div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Task Id</label>
+														<div class="col-sm-9">
+															<input value=<?php// echo $idtask ?> type="text" name="objective" readonly class="form-control" required="">
+														</div>
+													</div> -->
+
+
 													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Status</label>
 														<div class="col-sm-9">
@@ -160,6 +172,12 @@
 											<div class="panel-body">
 												<form method="post" action="" onsubmit="test3()" id="demo-form4" class="form-horizontal mb-lg" novalidate="novalidate">
 
+													<!-- <div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Task Id</label>
+														<div class="col-sm-9">
+															<input value=<?php //echo $idtask ?> type="text" name="objective" readonly class="form-control" required="">
+														</div>
+													</div> -->
 
 													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Status</label>
@@ -176,7 +194,7 @@
 											<footer class="panel-footer">
 												<div class="row">
 													<div class="col-md-12 text-right">
-														<button type="submit" class="btn btn-primary">Submit</button>
+														<button id="buu" type="submit" class="btn btn-primary">Submit</button>
 														<button class="btn btn-default modal-dismiss">Cancel</button>
 													</div>
 												</div>
@@ -327,12 +345,17 @@
 
 		function test3(){
 			// alert("Data Masuk");
-				document.getElementById('demo-form3').action = '<?php echo site_url('okr/taskupdated');?>';
+			var href = $(this).attr("name");
+				document.getElementById('demo-form3').action = '<?php echo base_url()?> okr/taskupdated'+href;
+				alert(href);
 		}
 
 		function test4(){
 			// alert("Data Masuk");
-				document.getElementById('demo-form4').action = '<?php echo site_url('okr/taskupdated');?>';
+			var href = $(this).attr("name");
+				document.getElementById('demo-form4').action = '<?php echo base_url('okr/taskupdated');?>'+href;
+				alert(href);
+
 		}
 
 

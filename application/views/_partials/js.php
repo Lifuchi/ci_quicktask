@@ -72,4 +72,4 @@
     <script src="<?php echo base_url(); ?>assets/javascripts/tables/examples.datatables.editable.js"></script>
     <script src="<?php echo base_url(); ?>assets/javascripts/tables/examples.datatables.tabletools.js"></script>
     <script src="<?php echo base_url(); ?>assets/javascripts/ui-elements/examples.modals.js"></script>
-    <script src="<?php echo base_url(); ?> assets/javascripts/forms/examples.advanced.form.js" /></script>
+    <!-- <script src="<?php //echo base_url(); ?>assets/javascripts/forms/examples.advanced.form.js" /></script> -->

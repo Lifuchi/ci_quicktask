@@ -75,6 +75,23 @@ class Okr extends MY_MainController {
 
 	}
 
+	public function added()
+	{
+		$o = $this->input->post('objective');
+
+		$data = array(
+			'OBJECTIVE' => $o,
+			'DESCRIPTION' => $desc,
+			'T_ID' => $team
+			);
+		$this->Okr_model->insert($data, 'qt_task');
+		// redirect('dashboard');
+		$redi = "divisi/".$team;
+		redirect($redi);
+
+	}
+
+
 
 
 }
