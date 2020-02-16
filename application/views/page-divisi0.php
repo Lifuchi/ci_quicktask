@@ -331,6 +331,10 @@
 		<?php $this->load->view("_partials/js.php") ?>
 
 		<script>
+		</script>
+
+
+		<script>
 		function test(){
 			// alert("Data Masuk");
 				document.getElementById('demo-form').action = '<?php echo site_url('okr/added');?>';
@@ -367,7 +371,7 @@
 		function test3(){
 			// alert("Data Masuk");
 			// var href = document.getElementById("myBtn").value;
-				var x = document.getElementById('demo-form3').action = '<?php echo base_url()?>okr/taskupdated';
+				var x = document.getElementById('demo-form3').action = '<?php echo base_url()?>okr/taskupdated2';
 				// alert(href);
 				// alert(x);
 		}

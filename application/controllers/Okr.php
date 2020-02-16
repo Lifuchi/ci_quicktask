@@ -80,7 +80,7 @@ class Okr extends MY_MainController {
 		$t = $this->input->post('task');
 		$status= $this->input->post('stats');
 		$team = $this->session->userdata('T_ID');
-
+		// $target = $this->Okr_model->findTarget('qt_task' , $t);
 		$akhir = date("Y-m-d h:i:sa");
 		$data = array(
 			'TA_STATUS' => $status,
@@ -93,5 +93,28 @@ class Okr extends MY_MainController {
 
 	}
 
+	public function taskupdated2()
+	{
+		$t = $this->input->post('task');
+		$status= $this->input->post('stats');
+		$team = $this->session->userdata('T_ID');
+		$target = $this->Okr_model->findTarget('qt_task' , $t)->result_array();
+		foreach($target as $row){
+					$result['TA_TARGET'] = $row['TA_TARGET'];
+		}
+		// echo $result['TA_TARGET'];
+		// echo $status;
+		$hitung = $status/$result['TA_TARGET']*100;
+		// echo $hitung;
+		$akhir = date("Y-m-d h:i:sa");
+		$data = array(
+			'TA_STATUS' => $hitung,
+			'TA_UPDATE' => $akhir
+			);
+		$this->Okr_model->updateTask($data, 'qt_task' , $t);
+		// redirect('dashboard');
+		$redi = "divisi/".$team;
+		redirect($redi);
+	}
 
 }

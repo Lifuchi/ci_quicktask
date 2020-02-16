@@ -59,6 +59,8 @@ $route['okr/add'] = 'okr/add';
 $route['okr/added'] = 'okr/added';
 $route['okr/taskadded'] = 'okr/taskadded';
 $route['okr/taskupdated'] = 'okr/taskupdated';
+$route['okr/taskupdated2'] = 'okr/taskupdated2';
+
 
 $route['divisi/(:any)'] = 'divisi/index/$1';
 
