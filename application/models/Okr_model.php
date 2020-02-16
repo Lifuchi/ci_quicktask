@@ -23,10 +23,9 @@ class Okr_model extends CI_Model {
 
 	}
 
-	public function updateTask($data,$table, , $id){
+	public function updateTask($data,$table, $id){
 		$this->db->where('TASK_ID', $id);
-	   $this->db->update($table, $data);
-
+	  $this->db->update($table, $data);
 	}
 
 }

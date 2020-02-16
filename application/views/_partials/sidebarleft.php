@@ -28,7 +28,7 @@
               </a>
               <ul class="nav nav-children">
                 <li>
-                  <a href=<?php echo site_url('okr');?>>
+                  <a href=<?php //echo site_url('okr');?>>
                      Objective
                   </a>
                 </li>

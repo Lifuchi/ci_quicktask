@@ -75,23 +75,23 @@ class Okr extends MY_MainController {
 
 	}
 
-	public function added()
+	public function taskupdated()
 	{
-		$o = $this->input->post('objective');
+		$t = $this->input->post('task');
+		$status= $this->input->post('stats');
+		$team = $this->session->userdata('T_ID');
 
+		$akhir = date("Y-m-d h:i:sa");
 		$data = array(
-			'OBJECTIVE' => $o,
-			'DESCRIPTION' => $desc,
-			'T_ID' => $team
+			'TA_STATUS' => $status,
+			'TA_UPDATE' => $akhir
 			);
-		$this->Okr_model->insert($data, 'qt_task');
+		$this->Okr_model->updateTask($data, 'qt_task' , $t);
 		// redirect('dashboard');
 		$redi = "divisi/".$team;
 		redirect($redi);
 
 	}
-
-
 
 
 }

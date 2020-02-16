@@ -94,11 +94,11 @@
 											<?php if ($this->session->userdata('T_ID') == $idteam ) { ?>
 												<?php if ($nilai == 1){
 													?>
-													<th><a name = <?php echo $idtask?> href = "#modalStatus2" class=" modal-with-form btn btn-default btn-danger">Change Status</a></th>
+													<th><a id = <?php echo $idtask?> onclick="coba(this.id)" name = <?php echo $idtask?> href = "#modalStatus2" class=" modal-with-form btn btn-default btn-danger">Change Status</a></th>
 													<?php
 												}else{
 													?>
-													<th><a name = <?php echo $idtask?> href = "#modalStatus" class=" modal-with-form btn btn-default btn-primary">Change Status</a></th>
+													<th><a id = <?php echo $idtask?> onclick="coba2(this.id)" name = <?php echo $idtask?> href = "#modalStatus" class=" modal-with-form btn btn-default btn-primary">Change Status</a></th>
 
 													<?php
 												}?>
@@ -134,14 +134,12 @@
 											<div class="panel-body">
 												<form method="post" action="" onsubmit="test3()" id="demo-form3" class="form-horizontal mb-lg" novalidate="novalidate">
 
-
-													<!-- <div class="form-group mt-lg">
+													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Task Id</label>
 														<div class="col-sm-9">
-															<input value=<?php// echo $idtask ?> type="text" name="objective" readonly class="form-control" required="">
+															<input id = "task2" value= "" type="text" name="task" readonly class="form-control" required="">
 														</div>
-													</div> -->
-
+													</div>
 
 													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Status</label>
@@ -170,14 +168,14 @@
 												<h2 class="panel-title">Change Status</h2>
 											</header>
 											<div class="panel-body">
-												<form method="post" action="" onsubmit="test3()" id="demo-form4" class="form-horizontal mb-lg" novalidate="novalidate">
+												<form method="post" action="" onsubmit="test4()" id="demo-form4" class="form-horizontal mb-lg" novalidate="novalidate">
 
-													<!-- <div class="form-group mt-lg">
+													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Task Id</label>
 														<div class="col-sm-9">
-															<input value=<?php //echo $idtask ?> type="text" name="objective" readonly class="form-control" required="">
+															<input id=task type="text" name="task" readonly class="form-control" required="">
 														</div>
-													</div> -->
+													</div>
 
 													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Status</label>
@@ -343,18 +341,42 @@
 				document.getElementById('demo-form2').action = '<?php echo site_url('okr/taskadded');?>';
 		}
 
+		// $("a").click(function() {
+    // // var fired_button = $(this).val();
+		// var fired_button = $(this).attr('value');
+    // alert(fired_button);
+		// });
+
+		function coba(a){
+
+			 document.getElementById("task").value = a;
+
+			// console.log(a);
+			// alert(a);
+		}
+
+		function coba2(a){
+
+			 document.getElementById("task2").value = a;
+
+			// console.log(a);
+			// alert(a);
+		}
+
+
 		function test3(){
 			// alert("Data Masuk");
-			var href = $(this).attr("name");
-				document.getElementById('demo-form3').action = '<?php echo base_url()?> okr/taskupdated'+href;
-				alert(href);
+			// var href = document.getElementById("myBtn").value;
+				var x = document.getElementById('demo-form3').action = '<?php echo base_url()?>okr/taskupdated';
+				// alert(href);
+				alert(x);
 		}
 
 		function test4(){
 			// alert("Data Masuk");
-			var href = $(this).attr("name");
-				document.getElementById('demo-form4').action = '<?php echo base_url('okr/taskupdated');?>'+href;
-				alert(href);
+			// var href = document.getElementById("myBtn").value;
+				var x = document.getElementById('demo-form4').action = '<?php echo base_url('okr/taskupdated');?>';
+				alert(x);
 
 		}
 
