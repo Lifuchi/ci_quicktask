@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dashboard extends MY_MainController {
-	protected $access = "Admin";
+	protected $access = "Admin, Client";
 
 
 	  public function __construct(){
