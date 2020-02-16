@@ -15,7 +15,7 @@ class Dashboard_model extends CI_Model {
   }
 
 	public function getProgressBar(){
-		$query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN, COALESCE(COUNT(IF(t.`TA_STATUS`= 1 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`TA_STATUS`)) AS alls
+		$query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN, COALESCE(COUNT(IF(t.`TA_STATUS`= 100 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`TA_STATUS`)) AS alls
 		FROM qt_team te
 		LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
 		LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
@@ -26,7 +26,7 @@ class Dashboard_model extends CI_Model {
 	}
 
 	public function getNetworkOverall(){
-		$query = "SELECT COALESCE(COUNT(IF(t.`TA_STATUS`= 1 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`TA_STATUS`)) AS alls
+		$query = "SELECT COALESCE(COUNT(IF(t.`TA_STATUS`= 100 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`TA_STATUS`)) AS alls
 		FROM qt_team te
 		LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
 		LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
@@ -37,7 +37,7 @@ class Dashboard_model extends CI_Model {
 
 	public function getObjective()
 	{
-		$query = "SELECT te.T_NAME ,te.T_USER, te.T_SINGKATAN,o.`OBJECTIVE` , COALESCE(COUNT(IF(t.`TA_STATUS`= 1 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`TA_STATUS`)) AS alls
+		$query = "SELECT te.T_NAME ,te.T_USER, te.T_SINGKATAN,o.`OBJECTIVE` , COALESCE(COUNT(IF(t.`TA_STATUS`= 100 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`TA_STATUS`)) AS alls
 FROM qt_team te
 LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
 LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`

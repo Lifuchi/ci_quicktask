@@ -13,20 +13,11 @@
 
 				<?php $this->load->view("_partials/header.php") ?>
 
-
-
 				<!-- start: search & user box -->
 				<div class="header-right">
-
-
-
 					<span class="separator"></span>
-
-
 					<span class="separator"></span>
 					<?php $this->load->view("_partials/navbar.php") ?>
-
-
 				</div>
 				<!-- end: search & user box -->
 			</header>
@@ -45,7 +36,7 @@
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
 								<li>
-									<a href=<?php echo site_url('okr');?>>
+									<a href=<?php echo site_url('dashboard');?>>
 										<i class="fa fa-home"></i>
 									</a>
 								</li>
@@ -74,20 +65,45 @@
 											<?php foreach ($content->field_data() as $field): ?>
 												<th><?php echo $field->name ?> </th>
 										<?php endforeach ?>
+											<?php if ($this->session->userdata('T_ID') == $idteam ) { ?>
 												<th>ACTION</th>
+											<?php } ?>
 
 										</tr>
 									</thead>
 									<tbody>
 										<?php foreach ($content->result_array() as $key): ?>
 										<tr class="gradeA">
+											<?php $nilai = 0;?>
 											<?php foreach ($key as $idnya => $key1): ?>
 												<td> <?php echo $key1 ; ?></td>
+												<?php
+												// echo "<script>console.log('apakah masuk');</script>";
+												if ($idnya == 'PROJECT TASK'){
+													// echo "<script>console.log('apakah masuk2');</script>";
+
+													if($key1 == 'Qualitativ'){
+														$nilai = 1;
+													}
+												}
+												?>
 											<?php endforeach ?>
-											<td> action</td>
+
+											<?php if ($this->session->userdata('T_ID') == $idteam ) { ?>
+												<?php if ($nilai == 1){
+													?>
+													<th><a href = "#modalStatus2" class=" modal-with-form btn btn-default btn-danger">Change Status</a></th>
+													<?php
+												}else{
+													?>
+													<th><a href = "#modalStatus" class=" modal-with-form btn btn-default btn-primary">Change Status</a></th>
+
+													<?php
+												}?>
+
+										 <?php  }?>
 
 										</tr>
-
 									<?php endforeach ?>
 
 
@@ -108,6 +124,69 @@
 								<?php } ?>
 									<br>
 
+									<div id="modalStatus" class="modal-block modal-block-primary mfp-hide">
+										<section class="panel">
+											<header class="panel-heading">
+												<h2 class="panel-title">Change Status</h2>
+											</header>
+											<div class="panel-body">
+												<form method="post" action="" onsubmit="test3()" id="demo-form3" class="form-horizontal mb-lg" novalidate="novalidate">
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Status</label>
+														<div class="col-sm-9">
+															<input min="0" max="100" id = "stats" type="number" name="stats" class="form-control" placeholder="Type your status..." required="">
+														</div>
+													</div>
+
+
+											</div>
+											<footer class="panel-footer">
+												<div class="row">
+													<div class="col-md-12 text-right">
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button class="btn btn-default modal-dismiss">Cancel</button>
+													</div>
+												</div>
+											</footer>
+										</form>
+										</section>
+									</div>
+
+									<div id="modalStatus2" class="modal-block modal-block-primary mfp-hide">
+										<section class="panel">
+											<header class="panel-heading">
+												<h2 class="panel-title">Change Status</h2>
+											</header>
+											<div class="panel-body">
+												<form method="post" action="" onsubmit="test3()" id="demo-form4" class="form-horizontal mb-lg" novalidate="novalidate">
+
+
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Status</label>
+														<div class="col-sm-9">
+															<select  name = "stats" class="form-control mb-md">
+																<option value = 0 > To Do</option>
+																<option value = 100 >Done</option>
+															</select>
+														</div>
+
+													</div>
+
+											</div>
+											<footer class="panel-footer">
+												<div class="row">
+													<div class="col-md-12 text-right">
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button class="btn btn-default modal-dismiss">Cancel</button>
+													</div>
+												</div>
+											</footer>
+										</form>
+										</section>
+									</div>
+
+
+
 									<div id="modalForm" class="modal-block modal-block-primary mfp-hide">
 										<section class="panel">
 											<header class="panel-heading">
@@ -124,7 +203,7 @@
 													<div class="form-group">
 														<label class="col-sm-3 control-label">Description</label>
 														<div class="col-sm-9">
-															<textarea name="desc" rows="5" class="form-control" placeholder="Type your objective..." required></textarea>
+															<textarea name="desc" rows="5" class="form-control" placeholder="Type your Description..." required></textarea>
 														</div>
 													</div>
 											</div>
@@ -244,6 +323,16 @@
 		function test2(){
 			// alert("Data Masuk");
 				document.getElementById('demo-form2').action = '<?php echo site_url('okr/taskadded');?>';
+		}
+
+		function test3(){
+			// alert("Data Masuk");
+				document.getElementById('demo-form3').action = '<?php echo site_url('okr/taskupdated');?>';
+		}
+
+		function test4(){
+			// alert("Data Masuk");
+				document.getElementById('demo-form4').action = '<?php echo site_url('okr/taskupdated');?>';
 		}
 
 

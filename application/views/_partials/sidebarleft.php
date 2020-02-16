@@ -21,7 +21,7 @@
               </a>
             </li>
 
-            <li class="nav-parent">
+            <!-- <li class="nav-parent">
               <a>
                 <i class="fa fa-copy" aria-hidden="true"></i>
                 <span>OKR</span>
@@ -33,18 +33,18 @@
                   </a>
                 </li>
                 <li>
-                  <a href=<?php echo site_url('Key_Feature');?>>
+                  <a href=<?php //echo site_url('Key_Feature');?>>
                      Key Feature
                   </a>
                 </li>
                 <li>
-                  <a href=<?php echo site_url('Activity');?>>
+                  <a href=<?php //echo site_url('Activity');?>>
                      Activity
                   </a>
                 </li>
 
               </ul>
-            </li>
+            </li> -->
 
           </ul>
         </nav>
