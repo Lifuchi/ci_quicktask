@@ -31,6 +31,16 @@ class Divisi_model extends CI_Model {
 		return $data;
 	}
 
+  public function getListObjective($id)
+  {
+      $query = "SELECT o.`OBJECTIVE_ID` , o.`OBJECTIVE`
+      FROM qt_team te
+      JOIN QT_OBJECTIVE o ON te.`T_ID` = o.`T_ID`
+      WHERE te.T_ID = ?";
+      $data = $this->db->query($query, $id);
+  		return $data;
+  }
+
   public function getTasks($id,$obj){
     $query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN ,o.OBJECTIVE_ID,o.`OBJECTIVE`, t.`TA_NAME`
     FROM qt_team te

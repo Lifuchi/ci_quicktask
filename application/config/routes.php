@@ -57,6 +57,8 @@ $route['Dashboard'] = 'dashboard';
 $route['okr'] = 'okr';
 $route['okr/add'] = 'okr/add';
 $route['okr/added'] = 'okr/added';
+$route['okr/taskadded'] = 'okr/taskadded';
+
 
 $route['divisi/(:any)'] = 'divisi/index/$1';
 

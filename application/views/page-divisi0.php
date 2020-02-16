@@ -73,8 +73,8 @@
 										<tr>
 											<?php foreach ($content->field_data() as $field): ?>
 												<th><?php echo $field->name ?> </th>
-
 										<?php endforeach ?>
+												<th>ACTION</th>
 
 										</tr>
 									</thead>
@@ -84,8 +84,12 @@
 											<?php foreach ($key as $idnya => $key1): ?>
 												<td> <?php echo $key1 ; ?></td>
 											<?php endforeach ?>
+											<td> action</td>
+
 										</tr>
+
 									<?php endforeach ?>
+
 
 									</tbody>
 								</table>
@@ -98,7 +102,7 @@
 									<div class="btn-group btn-group-justified">
 										<a href = "#modalForm" class=" modal-with-form btn btn-default btn-primary" role="button">Add Objective</a>
 										<!-- <button type="button" class="btn btn-default btn-primary">Primary</button> -->
-										<a class="btn btn-default btn-danger" role="button">Add Task</a>
+										<a href = "#modalForm2" class="modal-with-form btn btn-default btn-danger" role="button">Add Task</a>
 									</div>
 
 								<?php } ?>
@@ -117,10 +121,89 @@
 															<input type="text" name="objective" class="form-control" placeholder="Type your objective..." required="">
 														</div>
 													</div>
-													<!-- <div class="form-group">
-														<label class="col-sm-3 control-label">URL</label>
+													<div class="form-group">
+														<label class="col-sm-3 control-label">Description</label>
 														<div class="col-sm-9">
-															<input type="url" name="url" class="form-control" placeholder="Type an URL...">
+															<textarea name="desc" rows="5" class="form-control" placeholder="Type your objective..." required></textarea>
+														</div>
+													</div>
+											</div>
+											<footer class="panel-footer">
+												<div class="row">
+													<div class="col-md-12 text-right">
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button class="btn btn-default modal-dismiss">Cancel</button>
+													</div>
+												</div>
+											</footer>
+										</form>
+										</section>
+									</div>
+
+									<div id="modalForm2" class="modal-block modal-block-primary mfp-hide">
+										<section class="panel">
+											<header class="panel-heading">
+												<h2 class="panel-title">Add Tasks</h2>
+											</header>
+											<div class="panel-body">
+												<form method="post" action="" onsubmit="test2()" id="demo-form2" class="form-horizontal mb-lg" novalidate="novalidate">
+
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Objective</label>
+														<div class="col-sm-9">
+															<select name= "obj" class="form-control mb-md">
+																<?php foreach ($contentobjective->result_array() as $key): ?>
+																<option value ="<?php echo $key['OBJECTIVE_ID'];?>"><?php echo $key['OBJECTIVE'];?></option>
+															<?php endforeach ?>
+															</select>
+														</div>
+													</div>
+
+
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Task Name</label>
+														<div class="col-sm-9">
+															<input type="text" name="tasks" class="form-control" placeholder="Type your tasks..." required="">
+														</div>
+													</div>
+
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Project Task</label>
+														<div class="col-sm-9">
+
+															<select onchange="getQ(this.value)" name = "qtask" class="form-control mb-md">
+																<option value = "Quantitati" >Quantitati</option>
+																<option value = "Qualitativ" >Qualitativ</option>
+															</select>
+														</div>
+
+												</div>
+
+												<div class="form-group mt-lg">
+													<label class="col-sm-3 control-label">Target</label>
+													<div class="col-sm-9">
+														<input id = "target"  value="1" type="number" name="target" class="form-control" placeholder="Type your tasks..." required="">
+													</div>
+												</div>
+
+													<!-- <div class="form-group">
+													<label class="col-md-3 control-label">Date range</label>
+													<div class="col-md-6">
+														<div  class="input-daterange input-group" data-plugin-datepicker >
+															<span class="input-group-addon">
+																<i class="fa fa-calendar"></i>
+															</span>
+															<input type="text" class="form-control" name="start" id="start">
+															<span class="input-group-addon">to</span>
+															<input type="text" class="form-control" name="end" id="end">
+														</div>
+													</div>
+												</div> -->
+
+													<!-- <div class="form-group">
+														<label class="col-sm-3 control-label">Description</label>
+														<div class="col-sm-9">
+															<textarea name="desc" rows="5" class="form-control" placeholder="Type your objective..." required></textarea>
 														</div>
 													</div> -->
 											</div>
@@ -157,6 +240,57 @@
 			// alert("Data Masuk");
 				document.getElementById('demo-form').action = '<?php echo site_url('okr/added');?>';
 		}
+
+		function test2(){
+			// alert("Data Masuk");
+				document.getElementById('demo-form2').action = '<?php echo site_url('okr/taskadded');?>';
+		}
+
+
+		function getQ(val){
+          if (val == 'Quantitati'){
+            // alert("haloo");
+            document.getElementById('target').readOnly = false;
+          }else{
+            document.getElementById('target').readOnly = true;
+          }
+        }
+
+		$( document ).ready(function() {
+			console.log( "ready!" );
+
+			// $("#ui-datepicker-div").css("z-index", "1003" );
+
+				// $('#start').datepicker({
+				// 	// console.log( "ready!" );
+				// 	autoclose: true,
+				// 	container: '#demo-form2',
+				// 	format: 'yyyy-mm-dd'
+				// });
+				// $('#end').datepicker({
+				// 	// console.log( "ready!" );
+				// 	autoclose: true,
+				// 	container: '#demo-form2',
+				// 	format: 'yyyy-mm-dd'
+				// });
+
+		});
+		// $(document).ready(function() {
+		// 	alert(tes);
+		// 	$('#start').datepicker({
+		// 		autoclose: true,
+		// 		container: '#demo-form2',
+		// 		format: 'yyyy-mm-dd'
+		// 	});
+		// 	$('#end').datepicker({
+		// 		autoclose: true,
+		// 		container: '#demo-form2',
+		// 		format: 'yyyy-mm-dd'
+		// 	});
+		// } );
+
+
+
 		</script>
 	</body>
 </html>

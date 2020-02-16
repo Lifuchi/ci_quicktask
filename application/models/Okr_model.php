@@ -16,12 +16,15 @@ class Okr_model extends CI_Model {
 
 
 	public function insert($data,$table){
-
     $this->db->insert($table, $data);
     // $this->db->insert($table, $data[2]);
     // $this->db->insert($table, $data[3]);
+	}
+	public function insertTask($data,$table){
 
-
+		$this->db->insert($table, $data);
+		// $this->db->insert($table, $data[2]);
+		// $this->db->insert($table, $data[3]);
 	}
 
 }
