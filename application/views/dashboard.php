@@ -152,16 +152,16 @@
 										</div>
 									</header> -->
 									<!-- <div class="panel-body p-lg">
-										<h3 class="text-semibold mt-sm"><?php echo $key['OBJECTIVE']?></h3> -->
+										<h3 class="text-semibold mt-sm"><?php //echo $key['OBJECTIVE']?></h3> -->
 										<!-- <p>Nullam quiris risus eget urna mollis ornare vel eu leo. Soccis natoque penatibus et magnis dis parturient montes.</p> -->
 									<!-- </div> -->
 								<!-- </section> -->
 							<!-- </div> -->
 							<?php
-							if($key['done']== 0 && $key['alls'] == 0 ){
+							if($key['persendone']== 0 && $key['persenalls'] == 0 ){
 								$ht = 0;
 							}else{
-								$ht = round((int)$key['done']/(int)$key['alls']*100,2);
+								$ht = round((int)$key['persendone']/(int)$key['persenalls']*100,2);
 							}
 							?>
 
