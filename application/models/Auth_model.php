@@ -52,7 +52,7 @@ class Auth_model extends CI_Model {
 	}
 
 	public function getList(){
-		$query = "SELECT T_ID, T_NAME, T_USER FROM qt_team";
+		$query = "SELECT * FROM qt_team";
 		$data = $this->db->query($query);
 		return $data;
 	}

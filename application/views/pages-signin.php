@@ -7,10 +7,12 @@
 	</head>
 	<body>
 		<!-- start: page -->
-		<section class="body-sign">
+		<div class="col-lg-6">
+		<section class="body-sign" style="width: 10000px">
+	<!-- <section class="panel"> -->
 			<div class="center-sign">
 				<a href="/" class="logo pull-left">
-					<img src="assets/images/logo.png" height="54" alt="Porto Admin" />
+					<!-- <img src="assets/images/logo.png" height="54" alt="Porto Admin" /> -->
 				</a>
 
 				<div class="panel panel-sign">
@@ -65,6 +67,7 @@
 
 						<!-- </form>  -->
 
+
 						<div class="login-form">
                   <?php $error = $this->session->flashdata("error"); ?>
                   <div class="alert alert-<?php echo $error ? 'warning' : 'info' ?> alert-dismissible" role="alert">
@@ -88,7 +91,7 @@
 														<?php foreach ($content->field_data() as $field): ?>
 														<?php endforeach ?>
 																<?php foreach ($content->result_array() as $key){ ?>
-																			<option value="<?php echo $key['T_ID'] ?>"><?php echo $key['T_NAME'] ?></option>
+																			<option value="<?php echo $key['T_ID'] ?>"><?php echo $key['T_SINGKATAN'] ?></option>
 																<?php } ?>
 														</select>
 
@@ -109,11 +112,12 @@
 					</div>
 				</div>
 
+
 				<!-- <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2018. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p> -->
 			</div>
 		</section>
 		<!-- end: page -->
-
+</div>
 		<!-- Vendor -->
 		<script src="assets/vendor/jquery/jquery.js"></script>		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>		<script src="assets/vendor/bootstrap/js/bootstrap.js"></script>		<script src="assets/vendor/nanoscroller/nanoscroller.js"></script>		<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>		<script src="assets/vendor/magnific-popup/magnific-popup.js"></script>		<script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
 
@@ -134,5 +138,5 @@
 
 		</script>
 
-	</body><img src="http://www.ten28.com/fref.jpg">
+	</body>
 </html>
