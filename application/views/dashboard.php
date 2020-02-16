@@ -6,25 +6,17 @@
 	</head>
 	<body>
 		<section class="body">
-
 			<!-- start: header -->
-
 			<header class="header">
-
 				<?php $this->load->view("_partials/header.php") ?>
 				<div class="header-right">
-
 					<span class="separator"></span>
-
 					<span class="separator"></span>
 					<?php $this->load->view("_partials/navbar.php") ?>
-
-
 				</div>
 				<!-- end: search & user box -->
 			</header>
 			<!-- end: header -->
-
 			<div class="inner-wrapper">
 				<?php $this->load->view("_partials/sidebarleft.php") ?>
 
