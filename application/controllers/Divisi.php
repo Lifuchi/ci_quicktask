@@ -17,7 +17,7 @@ class Divisi extends MY_MainController {
     $get['contentask'] = $this->Divisi_model;
 
     // $this->load->view('welcome_message');
-    $this->load->view('page-divisi' , $get);
+    $this->load->view('page-divisi0' , $get);
   }
 
   public function add()

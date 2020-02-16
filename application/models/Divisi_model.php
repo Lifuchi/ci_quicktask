@@ -16,16 +16,17 @@ class Divisi_model extends CI_Model {
 
 
 	public function getObjective($id){
-    $query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN ,o.OBJECTIVE_ID,o.`OBJECTIVE`, t.`TA_NAME`
-    FROM qt_team te
-    LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
-    LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
-    WHERE te.T_ID = ?";
+    // $query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN ,o.OBJECTIVE_ID,o.`OBJECTIVE`, t.`TA_NAME`
+    // FROM qt_team te
+    // LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
+    // LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
+    // WHERE te.T_ID = ?";
+    // $query2 ="SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN ,o.`OBJECTIVE`, o.`OBJECTIVE_ID`
+    // FROM qt_team te
+    // LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
+    // WHERE te.T_ID = ?";
 
-    $query2 ="SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN ,o.`OBJECTIVE`, o.`OBJECTIVE_ID`
-    FROM qt_team te
-    LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
-    WHERE te.T_ID = ?";
+    $query2 = "SELECT  t.`TA_NAME` AS TASK , o.`OBJECTIVE` , t.`TA_PROJECTTASK` AS 'PROJEC TASK' , t.TA_TARGET AS TARGET , CASE t.`TA_STATUS` WHEN '0' THEN 'Active' WHEN '1' THEN 'Completed' WHEN t.`TA_STATUS` >0 AND t.`TA_STATUS` < 1 THEN 'In Progress' END AS `STATUS` FROM qt_team te LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID` JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID` WHERE te.T_ID = ?";
 		$data = $this->db->query($query2, $id);
 		return $data;
 	}
