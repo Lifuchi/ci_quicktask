@@ -369,14 +369,14 @@
 			// var href = document.getElementById("myBtn").value;
 				var x = document.getElementById('demo-form3').action = '<?php echo base_url()?>okr/taskupdated';
 				// alert(href);
-				alert(x);
+				// alert(x);
 		}
 
 		function test4(){
 			// alert("Data Masuk");
 			// var href = document.getElementById("myBtn").value;
 				var x = document.getElementById('demo-form4').action = '<?php echo base_url('okr/taskupdated');?>';
-				alert(x);
+				// alert(x);
 
 		}
 
