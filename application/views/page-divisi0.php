@@ -39,7 +39,7 @@
 				<section role="main" class="content-body">
 					<header class="page-header">
 						<?php foreach ($contentname->result_array() as $key): ?>
-						<h2><?php echo $key['T_NAME'] ?></h2>
+						<h2><?php echo $key['T_NAME']; $idteam = $key['T_ID'];  ?></h2>
 							<?php endforeach ?>
 
 						<div class="right-wrapper pull-right">
@@ -90,8 +90,53 @@
 									</tbody>
 								</table>
 							</div>
-						</section>
 
+							<div class="panel-body">
+
+								<?php if ($this->session->userdata('T_ID') == $idteam ) { ?>
+
+									<div class="btn-group btn-group-justified">
+										<a href = "#modalForm" class=" modal-with-form btn btn-default btn-primary" role="button">Add Objective</a>
+										<!-- <button type="button" class="btn btn-default btn-primary">Primary</button> -->
+										<a class="btn btn-default btn-danger" role="button">Add Task</a>
+									</div>
+
+								<?php } ?>
+									<br>
+
+									<div id="modalForm" class="modal-block modal-block-primary mfp-hide">
+										<section class="panel">
+											<header class="panel-heading">
+												<h2 class="panel-title">Add Objective</h2>
+											</header>
+											<div class="panel-body">
+												<form method="post" action="" onsubmit="test()" id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Objective Name</label>
+														<div class="col-sm-9">
+															<input type="text" name="objective" class="form-control" placeholder="Type your objective..." required="">
+														</div>
+													</div>
+													<!-- <div class="form-group">
+														<label class="col-sm-3 control-label">URL</label>
+														<div class="col-sm-9">
+															<input type="url" name="url" class="form-control" placeholder="Type an URL...">
+														</div>
+													</div> -->
+											</div>
+											<footer class="panel-footer">
+												<div class="row">
+													<div class="col-md-12 text-right">
+														<button type="submit" class="btn btn-primary">Submit</button>
+														<button class="btn btn-default modal-dismiss">Cancel</button>
+													</div>
+												</div>
+											</footer>
+										</form>
+										</section>
+									</div>
+							</div>
+						</section>
 
 					</div>
 
@@ -107,6 +152,11 @@
 
 		<?php $this->load->view("_partials/js.php") ?>
 
-
+		<script>
+		function test(){
+			// alert("Data Masuk");
+				document.getElementById('demo-form').action = '<?php echo site_url('okr/added');?>';
+		}
+		</script>
 	</body>
 </html>
