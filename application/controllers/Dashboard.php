@@ -25,6 +25,7 @@ class Dashboard extends MY_MainController {
 		// $data['all'] = $allact;
 		// $data['done'] = $doneact;
     $this->load->view('dashboard',$data);
+		// $this->load->view('layouts-menu-collapsed',$data);
 
 	}
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="fixed">
+<html class="fixed sidebar-left-collapsed">
 	<head>
 		<?php $this->load->view("_partials/head.php") ?>
 
@@ -16,11 +16,9 @@
 
 				<div class="header-right">
 
+					<!-- <span class="separator"></span> -->
 
-
-					<span class="separator"></span>
-
-					<span class="separator"></span>
+					<!-- <span class="separator"></span> -->
 					<?php $this->load->view("_partials/navbar.php") ?>
 
 
@@ -36,7 +34,6 @@
 				<section role="main" class="content-body">
 					<header class="page-header">
 						<h2>Dashboard</h2>
-
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
 								<li>
@@ -202,16 +199,11 @@
 				</section>
 			</div>
 
-
-
 <!-- tes -->
 			<?php $this->load->view("_partials/sidebar.php") ?>
 
 		</section>
-
 		<?php $this->load->view("_partials/js.php") ?>
-
-
 		<script>
 
 		$( document ).ready(function() {
