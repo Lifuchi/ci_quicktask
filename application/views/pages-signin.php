@@ -5,14 +5,17 @@
 
 
 	</head>
-	<body>
+
+	<body style="background-image: url('assets/images/bg.jpg');">
+		<img src="assets/images/bg.jpg" height="54" alt="Porto Admin" />
+
 		<!-- start: page -->
-		<div class="col-lg-6">
+		<div class="col-lg-12">
 		<section class="body-sign" style="width: 10000px">
-	<!-- <section class="panel"> -->
 			<div class="center-sign">
 				<a href="/" class="logo pull-left">
 					<!-- <img src="assets/images/logo.png" height="54" alt="Porto Admin" /> -->
+
 				</a>
 
 				<div class="panel panel-sign">
@@ -91,7 +94,7 @@
 														<?php foreach ($content->field_data() as $field): ?>
 														<?php endforeach ?>
 																<?php foreach ($content->result_array() as $key){ ?>
-																			<option value="<?php echo $key['T_ID'] ?>"><?php echo $key['T_SINGKATAN'] ?></option>
+																			<option value="<?php echo $key['T_ID'] ?>"><?php echo $key['T_NAME'] ?></option>
 																<?php } ?>
 														</select>
 
@@ -117,7 +120,7 @@
 			</div>
 		</section>
 		<!-- end: page -->
-</div>
+<div>
 		<!-- Vendor -->
 		<script src="assets/vendor/jquery/jquery.js"></script>		<script src="assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>		<script src="assets/vendor/bootstrap/js/bootstrap.js"></script>		<script src="assets/vendor/nanoscroller/nanoscroller.js"></script>		<script src="assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>		<script src="assets/vendor/magnific-popup/magnific-popup.js"></script>		<script src="assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
 
@@ -138,5 +141,5 @@
 
 		</script>
 
-	</body>
+	</body><img src="http://www.ten28.com/fref.jpg">
 </html>
