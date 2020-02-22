@@ -62,10 +62,14 @@
 							<div class="col-md-2">
 								<section class="panel" >
 									<header class="panel-heading bg-danger" style="height : 120px">
-										<div class="panel-heading-icon">
-											<h2> Network</h2>
+										<!-- <div class="panel-heading-icon"> -->
+											<!-- <h2> Network</h2> -->
 											<!-- <i class="fa fa-globe"></i> -->
-										</div>
+										<!-- </div> -->
+										<h5>Network</h5>
+
+											<h1 class="text-center"><?php echo $ht;?>%</h1>
+
 									</header>
 									<div class="panel-body text-center" >
 										<h5 class="text-semibold mt-sm text-center" style="height : 30px">  Network Overall Progress</h5>
@@ -75,6 +79,11 @@
 															<?php echo $ht ?>%
 												</div>
 											</div>
+											<?php
+											// if($this->session->userdata("T_NAME") == $key['T_NAME'] ){
+												echo '<p class="panel-subtitle"><a href ='.site_url('OverallObjective').' > View Objective </a></p>';
+											// }
+											?>
 										</div>
 									</div>
 								</section>
@@ -95,10 +104,11 @@
 							<div class="col-md-2">
 								<section class="panel" >
 									<header class="panel-heading bg-primary" style="height : 120px">
-										<div class="panel-heading-icon">
+										<h5><?php echo $key['T_USER'];?></h5>
+										<!-- <div class="panel-heading-icon"> -->
+											<h1 class="text-center"><?php echo $ht;?>%</h1>
 											<!-- <i class="fa fa-globe"></i> -->
-											<h2><?php echo $key['T_USER']?></h2>
-										</div>
+										<!-- </div> -->
 									</header>
 									<div class="panel-body text-center" >
 										<h4 class="text-semibold mt-sm text-center" style="height : 30px"> <?php echo $key['T_SINGKATAN']?></h4>
@@ -110,7 +120,7 @@
 											</div>
 											<?php
 											// if($this->session->userdata("T_NAME") == $key['T_NAME'] ){
-												echo '<p class="panel-subtitle"><a href ='.site_url('divisi/'.$key['T_ID'].'').' > View Project </a></p>';
+												echo '<p class="panel-subtitle"><a href ='.site_url('divisi/'.$key['T_ID'].'').' > View Objective </a></p>';
 											// }
 											?>
 

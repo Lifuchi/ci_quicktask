@@ -35,16 +35,29 @@ class Dashboard_model extends CI_Model {
 		return $data;
 	}
 
-	public function getObjective()
+	public function getObjective($id)
 	{
-		$query = "SELECT te.T_NAME ,te.T_USER, te.T_SINGKATAN,o.`OBJECTIVE` , SUM(t.`TA_STATUS`) AS persendone , COALESCE(COUNT(t.`TA_STATUS`))*100 AS persenalls ,COALESCE(COUNT(IF(t.`TA_STATUS`= 100 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`TA_STATUS`)) AS alls
+// 		$query = "SELECT te.T_NAME ,te.T_USER, te.T_SINGKATAN,o.`OBJECTIVE` , SUM(t.`TA_STATUS`) AS persendone , COALESCE(COUNT(t.`TA_STATUS`))*100 AS persenalls ,COALESCE(COUNT(IF(t.`TA_STATUS`= 100 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`TA_STATUS`)) AS alls
+// FROM qt_team te
+// LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
+// LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
+// WHERE te.T_ID > 0
+// GROUP BY (o.`OBJECTIVE_ID`)";
+$query = "SELECT o.`OBJECTIVE_ID` , o.`OBJECTIVE`
 FROM qt_team te
-LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
-LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
-WHERE te.T_ID > 0
-GROUP BY (o.`OBJECTIVE_ID`)";
-$data = $this->db->query($query);
+JOIN QT_OBJECTIVE o ON te.`T_ID` = o.`T_ID`
+where te.T_ID = ? ";
+$data = $this->db->query($query, $id);
 return $data;
+
+	}
+
+	public function getTeam(){
+		$query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN
+		FROM qt_team te
+		where te.T_ID > 2 ";
+		$data = $this->db->query($query);
+		return $data;
 
 	}
 

@@ -29,6 +29,20 @@ class Dashboard extends MY_MainController {
 
 	}
 
+	public function overall()
+	{
+
+		// $data['content'] =  $this->Dashboard_model->getProgressBar();
+		// $data['network'] =  $this->Dashboard_model->getNetworkOverall();
+		$data['team'] =  $this->Dashboard_model->getTeam();
+		// $data['objective'] =  $this->Dashboard_model->getObjective();
+		$data['objective'] =  $this->Dashboard_model;
+
+		$this->load->view('dashboard0',$data);
+
+
+	}
+
 	public function allActivity()
 	{
 		// $this->load->view('welcome_message');

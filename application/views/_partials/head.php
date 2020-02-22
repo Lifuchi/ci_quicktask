@@ -3,7 +3,7 @@
   <!-- Basic -->
   <meta charset="UTF-8">
 
-  <title>DQuick Tasks</title>
+  <title>Quick Tasks</title>
   <meta name="keywords" content="HTML5 Admin Template" />
   <meta name="description" content="JSOFT Admin - Responsive HTML5 Template">
   <meta name="author" content="JSOFT.net">

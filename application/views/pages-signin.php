@@ -5,12 +5,13 @@
 
 
 	</head>
-
-	<body style="background-image: url('assets/images/bg.jpg');">
-		<img src="assets/images/bg.jpg" height="54" alt="Porto Admin" />
+<!-- background-image: url("paper.gif"); -->
+<!-- background-image: url('assets/images/bg.jpg'); -->
+	<body >
+		<!-- <img src="assets/images/bg.jpg" height="54" alt="Porto Admin" /> -->
 
 		<!-- start: page -->
-		<div class="col-lg-12">
+		<div class="col-lg-12 "  style="background-image: url('assets/images/bg2.jpg');background-size: cover;" >
 		<section class="body-sign" style="width: 10000px">
 			<div class="center-sign">
 				<a href="/" class="logo pull-left">

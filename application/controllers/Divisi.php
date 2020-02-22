@@ -15,6 +15,8 @@ class Divisi extends MY_MainController {
     $get['contentname'] = $this->Divisi_model->getTeamName($id);
     $get['content'] = $this->Divisi_model->getObjective($id);
     $get['contentobjective'] = $this->Divisi_model->getListObjective($id);
+		$get['objective'] = $this->Divisi_model->getObjectiveStatus($id);
+
     $get['contentask'] = $this->Divisi_model;
 
     // $this->load->view('welcome_message');

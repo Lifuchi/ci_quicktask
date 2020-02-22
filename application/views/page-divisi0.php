@@ -49,6 +49,47 @@
 
 					<div class="row">
 
+
+						<?php foreach ($objective->result_array() as $key): ?>
+							<?php
+							 // if($key['done']== 0 && $key['alls'] == 0 ){
+							 	$ht = 0;
+							 // }else{
+							 // 	$ht = round((int)$key['done']/(int)$key['alls']*100,2);
+							 // }
+							?>
+							<div class="col-md-4">
+								<section class="panel" >
+									<header class="panel-heading bg-primary" >
+										<div class="panel-heading-icon">
+											<i class="fa fa-globe"></i>
+											<!-- <h4><?php //echo $key['T_SINGKATAN']?></h4> -->
+										</div>
+									 </header>
+									<div class="panel-body text-center"  >
+										<h4 class="text-semibold mt-sm text-center" style="height : 50px"> <?php echo $key['OBJECTIVE']?></h4>
+										<div class="panel-body" >
+											<div id='progressbar' class="progress light">
+												<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
+															<?php echo $ht ?>%
+												</div>
+											</div>
+
+											<div class="row show-grid">
+												<div class="col-md-4"><span class="show-grid-block"><h5>Target</h5> <h3><?php// echo $key['alls']?></h3></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>In Progress</h5> <h3><?php //echo ((int)$key['alls']- (int)$key['done'])?></h3></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>Completed</h5> <h3><?php //echo $key['done']?></h3></span></div>
+											</div>
+
+										</div>
+									</div>
+								</section>
+							</div>
+
+						<?php endforeach ?>
+						</div>
+
+
 						<section class="panel">
 							<header class="panel-heading">
 								<div class="panel-actions">
@@ -56,7 +97,8 @@
 									<a href="#" class="fa fa-times"></a>
 								</div>
 
-								<h2 class="panel-title"> Tasks</h2>
+
+								<h2 class="panel-title">Key Results</h2>
 							</header>
 							<div class="panel-body">
 								<table class="table table-bordered table-striped mb-none" id="datatable-tabletools" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
@@ -84,7 +126,7 @@
 												// echo "<script>console.log('apakah masuk');</script>";
 												if ($idnya == 'PROJECT TASK'){
 													// echo "<script>console.log('apakah masuk2');</script>";
-													if($key1 == 'Qualitativ'){
+													if($key1 == 'Qualiitative'){
 														$nilai = 1;
 													}
 												}
@@ -267,8 +309,8 @@
 														<div class="col-sm-9">
 
 															<select onchange="getQ(this.value)" name = "qtask" class="form-control mb-md">
-																<option value = "Quantitati" >Quantitati</option>
-																<option value = "Qualitativ" >Qualitativ</option>
+																<option value = "Quantitative" >Quantitative</option>
+																<option value = "Qualiitative" >Qualiitative</option>
 															</select>
 														</div>
 
@@ -281,7 +323,7 @@
 													</div>
 												</div>
 
-													<!-- <div class="form-group">
+													<div class="form-group">
 													<label class="col-md-3 control-label">Date range</label>
 													<div class="col-md-6">
 														<div  class="input-daterange input-group" data-plugin-datepicker >
@@ -293,7 +335,7 @@
 															<input type="text" class="form-control" name="end" id="end">
 														</div>
 													</div>
-												</div> -->
+												</div>
 
 													<!-- <div class="form-group">
 														<label class="col-sm-3 control-label">Description</label>
@@ -386,7 +428,7 @@
 
 
 		function getQ(val){
-          if (val == 'Quantitati'){
+          if (val == 'Quantitative'){
             // alert("haloo");
             document.getElementById('target').readOnly = false;
           }else{
