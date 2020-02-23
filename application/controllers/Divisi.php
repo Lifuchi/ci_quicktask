@@ -34,6 +34,7 @@ class Divisi extends MY_MainController {
 
 	public function addSubTask($count)
 	{
+
 		$kr = $this->input->post('kr');
 		$st = $this->input->post('subtask');
 		$bobot = $this->input->post('persentage');
@@ -57,11 +58,13 @@ class Divisi extends MY_MainController {
 			'SKR_BOBOT' => $bobot,
 			'SKR_STATUS' => $s
 		);
-		$this->Divisi_model->setSubKr($datax,'QT_SUBKR');
 	}
 
+	$this->Divisi_model->setSubKr($datax,'QT_SUBKR');
 		// $redi = "divisi/2";
-		// redirect($redi);
+		$redi = "dashboard";
+
+		redirect($redi);
 
 	}
 
