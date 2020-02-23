@@ -25,11 +25,11 @@ class Divisi_model extends CI_Model {
     // FROM qt_team te
     // LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
     // WHERE te.T_ID = ?";
-		$query2 = "SELECT kr.kr_id, kr.`kr_NAME` AS 'KRY RESULT' , o.`OBJECTIVE` , kr.`KR_TYPE` AS 'TYPE' ,
-		kr.KR_STATUS AS 'TASK PROGRESS (%)' ,kr.kr_TARGET AS TARGET ,
-		CASE kr.`kr_STATUS` WHEN '0' THEN 'To Do' WHEN '100' THEN 'Done' ELSE 'On Doing' END AS `STATUS` , kr.`kr_UPDATE` AS 'LAST UPDATE'
-		FROM qt_team te LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
-		JOIN qt_keyresult kr ON o.`OBJECTIVE_ID` = kr.`OBJECTIVE_ID` WHERE te.T_ID = ?;";
+		$query2 = "SELECT kr.KR_ID, kr.`kr_NAME` AS 'KEY RESULT' , o.`OBJECTIVE` , kr.`KR_TYPE` AS 'TYPE' , kr.KR_PROGRESS AS 'TASK PROGRESS (#)' ,
+kr.KR_STATUS AS 'TASK PROGRESS (%)' ,kr.kr_TARGET AS TARGET ,
+CASE kr.`kr_STATUS` WHEN '0' THEN 'To Do' WHEN '100' THEN 'Done' ELSE 'On Doing' END AS `STATUS` , kr.KR_END AS DEADLINE ,kr.`kr_UPDATE` AS 'LAST UPDATE'
+FROM qt_team te LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
+JOIN qt_keyresult kr ON o.`OBJECTIVE_ID` = kr.`OBJECTIVE_ID` WHERE te.T_ID = ?;";
 
  		// $query2 = "SELECT t.TASK_ID, t.`TA_NAME` AS TASK , o.`OBJECTIVE` , t.`TA_PROJECTTASK` AS 'PROJECT TASK' , t.TA_STATUS as 'TASK PROGRESS (%)' ,t.TA_TARGET AS TARGET , CASE t.`TA_STATUS` WHEN '0' THEN 'To Do' WHEN '100' THEN 'Done' ELSE 'On Doing' END AS `STATUS` , t.`TA_UPDATE` AS 'LAST UPDATE' FROM qt_team te LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID` JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID` WHERE te.T_ID = ?";
 		$data = $this->db->query($query2, $id);
@@ -57,6 +57,13 @@ class Divisi_model extends CI_Model {
 		$data = $this->db->query($query, $id);
 		return $data;
 	}
+
+	public function getProgressObjective($id){
+		$query = "SELECT te.T_NAME ,te.T_USER, te.T_SINGKATAN,o.`OBJECTIVE` , SUM(t.`KR_STATUS`) AS persendone , COALESCE(COUNT(t.`KR_STATUS`))*100 AS persenalls ,COALESCE(COUNT(IF(t.`KR_STATUS`= 100 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`KR_STATUS`)) AS alls FROM qt_team te LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID` LEFT JOIN qt_keyresult t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID` WHERE te.T_ID = ? GROUP BY (o.`OBJECTIVE_ID`)";
+		$data = $this->db->query($query,$id);
+		return $data;
+	}
+
 
   // public function getTasks($id,$obj){
   //   $query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN ,o.OBJECTIVE_ID,o.`OBJECTIVE`, t.`TA_NAME`
