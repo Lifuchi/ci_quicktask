@@ -16,22 +16,22 @@ class Dashboard_model extends CI_Model {
 
 	public function getProgressBar(){
 		$query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN, SUM(t.`KR_STATUS`) AS done  ,COALESCE(COUNT(t.`KR_STATUS`))*100 AS alls
-FROM qt_team te
-LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
-LEFT JOIN qt_keyresult t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
-WHERE te.T_ID > 1
-GROUP BY (te.`T_ID`)";
+			FROM qt_team te
+			LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
+			LEFT JOIN qt_keyresult t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
+			WHERE te.T_ID > 1
+			GROUP BY (te.`T_ID`)";
 		$data = $this->db->query($query);
 		return $data;
 	}
 
 	public function getNetworkOverall(){
 		$query = "SELECT SUM(t.`KR_STATUS`) AS done   ,COALESCE(COUNT(t.`KR_STATUS`))*100 AS alls
-FROM qt_team te
-LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
-LEFT JOIN qt_keyresult t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
-WHERE te.T_ID > 1";
-		$data = $this->db->query($query);
+		FROM qt_team te
+		LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
+		LEFT JOIN qt_keyresult t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
+		WHERE te.T_ID > 1";
+			$data = $this->db->query($query);
 		return $data;
 	}
 

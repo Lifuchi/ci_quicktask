@@ -40,7 +40,7 @@ class Divisi_model extends CI_Model {
   {
       $query = "SELECT o.`OBJECTIVE_ID` , o.`OBJECTIVE`
       FROM qt_team te
-      JOIN QT_OBJECTIVE o ON te.`T_ID` = o.`T_ID`
+      JOIN qt_objective o ON te.`T_ID` = o.`T_ID`
       WHERE te.T_ID = ?";
       $data = $this->db->query($query, $id);
   		return $data;
