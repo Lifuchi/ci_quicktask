@@ -26,9 +26,7 @@ class Divisi extends MY_MainController {
     // $this->load->view('welcome_message');
 		$get['contentobjective'] = $this->Divisi_model->getListObjective($id);
 		$get['contensubtask'] = $this->Divisi_model;
-
 		// $get['contentkeyfeature'] = $this->Divisi_model->getListObjective($id);
-
     $this->load->view('page-okr-add', $get);
   }
 
@@ -66,7 +64,7 @@ class Divisi extends MY_MainController {
 	if($tambah >100){
 		echo "<script>alert('ERROR! Max 100%')</script>";
 	}else{
-		$hit = $this->Divisi_model->setSubKr($datax,'QT_SUBKR',$tambah ,$kr);
+		$hit = $this->Divisi_model->setSubKr($datax,'qt_subkr',$tambah ,$kr);
 		if($hit == 0){
 			echo "<script>alert('ERROR! Max 100%')</script>";
 		}
