@@ -263,7 +263,7 @@
 													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">SubTask</label>
 														<div class="col-sm-9">
-															<select name = "kr" class="form-control populate">
+															<select name = "st" class="form-control populate">
 																<option >Choose</option>
 																<?php foreach ($contentask->getSbt($_COOKIE['myJavascriptVar'])->result_array() as $keys): ?>
 																		<option value ="<?php echo $keys['SKR_ID'];?>"><?php echo $keys['SKR_NAME'];?></option>

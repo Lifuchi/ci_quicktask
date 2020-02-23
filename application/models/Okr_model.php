@@ -43,7 +43,7 @@ class Okr_model extends CI_Model {
 
 	public function getSbt($id)
 	{
-		$query = "SELECT COALESCE(SUM(IF(sk.`SKR_STATUS`= 100,sk.SKR_BOBOT,NULL))) AS STATUS FROM QT_SUBKR sk WHERE KR_ID = ?";
+		$query = "SELECT COALESCE(SUM(IF(sk.`SKR_STATUS`= 100 , sk.SKR_BOBOT,NULL))) AS STATUS FROM QT_SUBKR sk WHERE KR_ID = ?";
 		$data = $this->db->query($query, $id);
 		// $hit = $data->row()->status;
 		return $data;

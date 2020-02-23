@@ -87,7 +87,7 @@ class Okr extends MY_MainController {
 		$t = $this->input->post('task');
 		$team = $this->input->post('idteam');
 		$status= $this->input->post('stats');
-		$kr = $this->input->post('kr');
+		$kr = $this->input->post('st');
 
 		// $team = $this->session->userdata('T_ID');
 		// $target = $this->Okr_model->findTarget('qt_task' , $t);
@@ -99,12 +99,14 @@ class Okr extends MY_MainController {
 				);
 
 		$this->Okr_model->updateSubTask($data, 'QT_SUBKR' , $kr);
-		sleep(1);
+		// sleep(1);
 
-		$hit = $this->Okr_model->getSbt($kr)->result_array();
+		$hit = $this->Okr_model->getSbt($t)->result_array();
 		foreach($hit as $row){
 			$result['STATUS'] = $row['STATUS'];
 		}
+
+		echo "<script>console.log(".(int)$result['STATUS'].");</script>";
 
 		$datax = array(
 			'KR_STATUS' => $result['STATUS'],
