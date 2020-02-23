@@ -86,7 +86,7 @@ class Divisi_model extends CI_Model {
 
 	public function getKrName($id){
 		$query = "SELECT	KR_NAME , KR_ID
-FROM QT_KEYRESULT kr
+FROM qt_keyresult kr
 WHERE kr.`OBJECTIVE_ID` = ? AND kr.`KR_TYPE` = 'Qualitative' ";
 		$data = $this->db->query($query, $id);
 		return $data;
@@ -95,7 +95,7 @@ WHERE kr.`OBJECTIVE_ID` = ? AND kr.`KR_TYPE` = 'Qualitative' ";
 
 	public function setSubKr($datax , $table , $tambah ,$id){
 
-		$query = "SELECT	SUM(sk.SKR_BOBOT) AS 'status' FROM QT_SUBKR sk WHERE KR_ID = ?";
+		$query = "SELECT	SUM(sk.SKR_BOBOT) AS 'status' FROM qt_subkr sk WHERE KR_ID = ?";
 		$data = $this->db->query($query, $id);
 		$data = $data->row()->status;
 
@@ -114,7 +114,7 @@ WHERE kr.`OBJECTIVE_ID` = ? AND kr.`KR_TYPE` = 'Qualitative' ";
 	public function getSbt($id)
 	{
 			$query = "SELECT *
-			FROM QT_SUBKR s
+			FROM qt_subkr s
 			WHERE KR_ID = ?";
 
 		$data = $this->db->query($query, $id);
