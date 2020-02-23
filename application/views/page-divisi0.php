@@ -284,8 +284,6 @@
 														</div>
 													</div>
 
-
-
 											</div>
 											<footer class="panel-footer">
 												<div class="row">
@@ -298,8 +296,6 @@
 										</form>
 										</section>
 									</div>
-
-
 
 									<div id="modalForm" class="modal-block modal-block-primary mfp-hide">
 										<section class="panel">
