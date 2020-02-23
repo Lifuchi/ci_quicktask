@@ -251,6 +251,7 @@
 															<input type="text" name="idteam" class="form-control" readonly value="<?php echo $idteam ?>">
 														</div>
 													</div>
+
 													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Key Result Id</label>
 														<div class="col-sm-9">
@@ -258,16 +259,32 @@
 														</div>
 													</div>
 
+
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">SubTask</label>
+														<div class="col-sm-9">
+															<select name = "kr" class="form-control populate">
+																<option >Choose</option>
+																<?php foreach ($contentask->getSbt($_COOKIE['myJavascriptVar'])->result_array() as $keys): ?>
+																		<option value ="<?php echo $keys['SKR_ID'];?>"><?php echo $keys['SKR_NAME'];?></option>
+																<?php endforeach ?>
+															</select>
+														</div>
+													</div>
+
+
 													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Status</label>
 														<div class="col-sm-9">
 															<select  name = "stats" class="form-control mb-md">
 																<option value = 0 > To Do</option>
-																<!-- <option value = 1 > On Doing</option> -->
+																<option value = 10 > On Doing</option>
 																<option value = 100 >Done</option>
 															</select>
 														</div>
 													</div>
+
+
 
 											</div>
 											<footer class="panel-footer">
@@ -409,7 +426,7 @@
 							</div>
 						</section>
 
-						
+
 
 					</div>
 
@@ -449,7 +466,10 @@
 		function coba(a){
 
 			 document.getElementById("task").value = a;
+			 document.cookie = "myJavascriptVar =" + a;
+//			 <?php //$msg = "<script>document.write(a);</script>"; ?>
 
+					<?php //$myPhpVar= $_COOKIE['myJavascriptVar'];?>
 			// console.log(a);
 			// alert(a);
 		}
@@ -457,9 +477,9 @@
 		function coba2(a){
 
 			 document.getElementById("task2").value = a;
+			 <?php $msg = "<script>document.write(a);</script>"; ?>
 
-			// console.log(a);
-			// alert(a);
+
 		}
 
 

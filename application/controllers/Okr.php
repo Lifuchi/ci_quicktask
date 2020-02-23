@@ -81,19 +81,38 @@ class Okr extends MY_MainController {
 
 	}
 
+//Qualitative
 	public function taskupdated()
 	{
 		$t = $this->input->post('task');
 		$team = $this->input->post('idteam');
 		$status= $this->input->post('stats');
+		$kr = $this->input->post('kr');
+
 		// $team = $this->session->userdata('T_ID');
 		// $target = $this->Okr_model->findTarget('qt_task' , $t);
+
 		$akhir = date("Y-m-d h:i:sa");
-		$data = array(
-			'KR_STATUS' => $status,
+
+			$data = array(
+				'SKR_STATUS' => $status
+				);
+
+		$this->Okr_model->updateSubTask($data, 'QT_SUBKR' , $kr);
+		sleep(1);
+
+		$hit = $this->Okr_model->getSbt($kr)->result_array();
+		foreach($hit as $row){
+			$result['STATUS'] = $row['STATUS'];
+		}
+
+		$datax = array(
+			'KR_STATUS' => $result['STATUS'],
 			'KR_UPDATE' => $akhir
 			);
-		$this->Okr_model->updateTask($data, 'qt_keyresult' , $t);
+
+		$this->Okr_model->updateTask($datax, 'QT_KEYRESULT' , $t);
+
 		// redirect('dashboard');
 		$redi = "divisi/".$team;
 		redirect($redi);

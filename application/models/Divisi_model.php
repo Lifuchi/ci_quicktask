@@ -111,4 +111,15 @@ WHERE kr.`OBJECTIVE_ID` = ? AND kr.`KR_TYPE` = 'Qualitative' ";
 
 	}
 
+	public function getSbt($id)
+	{
+			$query = "SELECT *
+			FROM QT_SUBKR s
+			WHERE KR_ID = ?";
+
+		$data = $this->db->query($query, $id);
+		return $data;
+
+	}
+
 }
