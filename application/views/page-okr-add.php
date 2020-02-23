@@ -162,7 +162,7 @@ var flag = 0;
 var count = 0;
 
 function test(){
-	alert("masuk gaj");
+	// alert("masuk gaj");
 		document.getElementById('addokr').action = '<?php echo site_url('subtask/added/');?>'+count;
 }
 
