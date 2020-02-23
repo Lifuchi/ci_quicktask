@@ -13,8 +13,8 @@
 
           <ul>
             <li>
-              <time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
-              <span>Company Meeting</span>
+              <!-- <time datetime="2014-04-19T00:00+00:00">04/19/2014</time>
+              <span>Company Meeting</span> -->
             </li>
           </ul>
         </div>

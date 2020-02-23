@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['Dashboard'] = 'dashboard';
+$route['OverallObjective'] = 'dashboard/overall';
 $route['okr'] = 'okr';
 $route['okr/add'] = 'okr/add';
 $route['okr/added'] = 'okr/added';
@@ -61,9 +62,12 @@ $route['okr/taskadded'] = 'okr/taskadded';
 $route['okr/taskupdated'] = 'okr/taskupdated';
 $route['okr/taskupdated2'] = 'okr/taskupdated2';
 
+$route['okr/taskupdated2'] = 'okr/taskupdated2';
+
+$route['subtask/added/(:any)'] = 'divisi/addSubTask/$1';
 
 $route['divisi/(:any)'] = 'divisi/index/$1';
-
+$route['divisiadd/(:any)'] = 'divisi/addSubTaskView/$1';
 
 // $route['ht'] = 'dashboard/allActivity';
 // $route['ht2'] = 'dashboard/doneActivity';

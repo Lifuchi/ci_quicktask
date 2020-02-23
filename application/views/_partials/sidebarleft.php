@@ -14,10 +14,16 @@
       <div class="nano-content">
         <nav id="menu" class="nav-main" role="navigation">
           <ul class="nav nav-main">
-            <li class="nav-active">
+            <li class="nav">
               <a href=<?php echo site_url('Dashboard');?>>
                 <i class="fa fa-home" aria-hidden="true"></i>
                 <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="nav">
+              <a href=<?php echo site_url('OverallObjective');?>>
+                <i class="fa fa-copy" aria-hidden="true"></i>
+                <span>Overall Objective</span>
               </a>
             </li>
 

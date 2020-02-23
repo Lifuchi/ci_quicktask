@@ -24,14 +24,14 @@ class Okr_model extends CI_Model {
 	}
 
 	public function updateTask($data,$table, $id){
-		$this->db->where('TASK_ID', $id);
+		$this->db->where('KR_ID', $id);
 	  $this->db->update($table, $data);
 	}
 
 	public function findTarget($table, $id){
 		// $data = $this->db->get_where($table, array('TASK_ID' => $id));
 		// return $data;
-		$query = "SELECT ta.TA_TARGET FROM QT_TASK ta WHERE ta.`TASK_ID` = ?";
+		$query = "SELECT ta.KR_TARGET FROM QT_KEYRESULT ta WHERE ta.`KR_ID` = ?";
 		$data = $this->db->query($query, $id);
 		return $data;
 	}

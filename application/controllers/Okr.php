@@ -26,8 +26,8 @@ class Okr extends MY_MainController {
   {
     $o = $this->input->post('objective');
 		$desc = $this->input->post('desc');
-    $team = $this->session->userdata('T_ID');
-
+    // $team = $this->session->userdata('T_ID');
+		$team = $this->input->post('idteam');
     // $start = $this->input->post('start');
     // $end = $this->input->post('end');
     // $namav = $this->input->post('Key Feature');
@@ -50,8 +50,11 @@ class Okr extends MY_MainController {
 		$t = $this->input->post('tasks');
 		$qt = $this->input->post('qtask');
 		$target = $this->input->post('target');
+		$start = $this->input->post('start');
+		$end = $this->input->post('end');
 
-		$team = $this->session->userdata('T_ID');
+		// $team = $this->session->userdata('T_ID');
+		$team = $this->input->post('idteam');
 		$s = 0;
 
 		// $start = $this->input->post('start');
@@ -62,13 +65,16 @@ class Okr extends MY_MainController {
 		$akhir = date("Y-m-d h:i:sa");
 		$data = array(
 			'OBJECTIVE_ID' => $o,
-			'TA_NAME' => $t,
-			'TA_PROJECTTASK' => $qt,
-			'TA_TARGET' => $target,
-			'TA_STATUS' => $s,
-			'TA_UPDATE' => $akhir
+			'KR_NAME' => $t,
+			'KR_TYPE' => $qt,
+			'KR_TARGET' => $target,
+			'KR_STATUS' => $s,
+			'KR_PROGRESS' => $s,
+			'KR_UPDATE' => $akhir,
+			'KR_START' => $start,
+			'KR_END' => $end
 			);
-		$this->Okr_model->insertTask($data, 'qt_task');
+		$this->Okr_model->insertTask($data, 'qt_keyresult');
 		// redirect('dashboard');
 		$redi = "divisi/".$team;
 		redirect($redi);
@@ -78,15 +84,16 @@ class Okr extends MY_MainController {
 	public function taskupdated()
 	{
 		$t = $this->input->post('task');
+		$team = $this->input->post('idteam');
 		$status= $this->input->post('stats');
-		$team = $this->session->userdata('T_ID');
+		// $team = $this->session->userdata('T_ID');
 		// $target = $this->Okr_model->findTarget('qt_task' , $t);
 		$akhir = date("Y-m-d h:i:sa");
 		$data = array(
-			'TA_STATUS' => $status,
-			'TA_UPDATE' => $akhir
+			'KR_STATUS' => $status,
+			'KR_UPDATE' => $akhir
 			);
-		$this->Okr_model->updateTask($data, 'qt_task' , $t);
+		$this->Okr_model->updateTask($data, 'qt_keyresult' , $t);
 		// redirect('dashboard');
 		$redi = "divisi/".$team;
 		redirect($redi);
@@ -97,21 +104,23 @@ class Okr extends MY_MainController {
 	{
 		$t = $this->input->post('task');
 		$status= $this->input->post('stats');
-		$team = $this->session->userdata('T_ID');
-		$target = $this->Okr_model->findTarget('qt_task' , $t)->result_array();
+		// $team = $this->session->userdata('T_ID');
+		$team = $this->input->post('idteam');
+		$target = $this->Okr_model->findTarget('qt_keyresult' , $t)->result_array();
 		foreach($target as $row){
-					$result['TA_TARGET'] = $row['TA_TARGET'];
+					$result['KR_TARGET'] = $row['KR_TARGET'];
 		}
 		// echo $result['TA_TARGET'];
 		// echo $status;
-		$hitung = $status/$result['TA_TARGET']*100;
+		$hitung = $status/$result['KR_TARGET']*100;
 		// echo $hitung;
 		$akhir = date("Y-m-d h:i:sa");
 		$data = array(
-			'TA_STATUS' => $hitung,
-			'TA_UPDATE' => $akhir
+			'KR_PROGRESS' => $status,
+			'KR_STATUS' => $hitung,
+			'KR_UPDATE' => $akhir
 			);
-		$this->Okr_model->updateTask($data, 'qt_task' , $t);
+		$this->Okr_model->updateTask($data, 'qt_keyresult' , $t);
 		// redirect('dashboard');
 		$redi = "divisi/".$team;
 		redirect($redi);

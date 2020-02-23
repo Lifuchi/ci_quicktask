@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="fixed">
+<html class="fixed sidebar-left-collapsed">
 	<head>
 		<?php $this->load->view("_partials/head.php") ?>
 
@@ -48,6 +48,54 @@
 					</header>
 
 					<div class="row">
+						<?php if ($this->session->userdata('T_ID') == $idteam || $this->session->userdata('T_ID') == 1 ) { ?>
+
+							<div class="btn-group btn-group-justified">
+								<a href = "#modalForm" class=" modal-with-form btn btn-default btn-warning" role="button">Add Objective</a>
+								<!-- <button type="button" class="btn btn-default btn-primary">Primary</button> -->
+								<!-- <a href = "#modalForm2" class="modal-with-form btn btn-default btn-danger" role="button">Add Task</a> -->
+							</div>
+
+						<?php } ?>
+							<br>
+
+						<?php foreach ($objective->result_array() as $key): ?>
+							<?php
+							  if($key['done']== 0 && $key['alls'] == 0 ){
+							 	$ht = 0;
+							  }else{
+							  	$ht = round((int)$key['persendone']/(int)$key['persenalls']*100,2);
+							  }
+							?>
+							<div class="col-md-4">
+								<section class="panel" >
+									<header class="panel-heading bg-primary" >
+										<div class="panel-heading-icon">
+											<i class="fa fa-globe"></i>
+											<!-- <h4><?php //echo $key['T_SINGKATAN']?></h4> -->
+										</div>
+									 </header>
+									<div class="panel-body text-center"  >
+										<h4 class="text-semibold mt-sm text-center" style="height : 50px"> <?php echo $key['OBJECTIVE']?></h4>
+										<div class="panel-body" >
+											<div id='progressbar' class="progress light">
+												<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
+															<?php echo $ht ?>%
+												</div>
+											</div>
+											<div class="row show-grid">
+												<div class="col-md-4"><span class="show-grid-block"><h5>Target</h5> <h3><?php echo $key['alls']?></h3></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>In Progress</h5> <h3><?php echo ((int)$key['alls']- (int)$key['done'])?></h3></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>Completed</h5> <h3><?php echo $key['done']?></h3></span></div>
+											</div>
+										</div>
+									</div>
+								</section>
+							</div>
+
+						<?php endforeach ?>
+						</div>
+
 
 						<section class="panel">
 							<header class="panel-heading">
@@ -56,16 +104,39 @@
 									<a href="#" class="fa fa-times"></a>
 								</div>
 
-								<h2 class="panel-title"> Tasks</h2>
+								<!-- <div> -->
+								<h2 class="panel-title">Key Results</h2>
+								<br>
+
+								<?php if ($this->session->userdata('T_ID') == $idteam || $this->session->userdata('T_ID') == 1 ) { ?>
+
+									<div class="btn-group btn-group-justified">
+										<!-- <a href = "#modalForm" class=" modal-with-form btn btn-default btn-primary" role="button">Add Objective</a> -->
+										<!-- <button type="button" class="btn btn-default btn-primary">Primary</button> -->
+										<a href = "#modalForm2" class="modal-with-form btn btn-default btn-danger" role="button">Add Key Result</a>
+										<a href = "<?php echo site_url('divisiadd/'.$idteam.'');  ?>" class="btn btn-default btn-primary" role="button">Add SubTask</a>
+
+									</div>
+								<?php } ?>
+								<!-- </div> -->
+
 							</header>
 							<div class="panel-body">
 								<table class="table table-bordered table-striped mb-none" id="datatable-tabletools" data-swf-path="assets/vendor/jquery-datatables/extras/TableTools/swf/copy_csv_xls_pdf.swf">
 									<thead>
 										<tr>
 											<?php foreach ($content->field_data() as $field): ?>
-												<th><?php echo $field->name ?> </th>
+
+												<?php if ($field->name == 'KR_ID'){
+												}else{
+													?>
+													<th> <?php echo $field->name ?> </th>
+													<?php
+												}
+												?>
+
 										<?php endforeach ?>
-											<?php if ($this->session->userdata('T_ID') == $idteam ) { ?>
+											<?php if ($this->session->userdata('T_ID') == $idteam || $this->session->userdata('T_ID') == 1 ) { ?>
 												<th>ACTION</th>
 											<?php } ?>
 
@@ -73,25 +144,32 @@
 									</thead>
 									<tbody>
 										<?php foreach ($content->result_array() as $key): ?>
+
+
 										<tr class="gradeA">
 											<?php $nilai = 0;?>
 											<?php foreach ($key as $idnya => $key1): ?>
-												<td> <?php echo $key1 ; ?></td>
 												<?php
-												if($idnya == 'TASK_ID'){
+												if($idnya == 'KR_ID'){
 													$idtask = $key1;
 												}
 												// echo "<script>console.log('apakah masuk');</script>";
-												if ($idnya == 'PROJECT TASK'){
+												if ($idnya == 'TYPE'){
 													// echo "<script>console.log('apakah masuk2');</script>";
-													if($key1 == 'Qualitativ'){
+													if($key1 == 'Qualitative'){
 														$nilai = 1;
 													}
+												}
+												if ($idnya == 'KR_ID'){
+												}else{
+													?>
+													<td> <?php echo $key1 ; ?></td>
+													<?php
 												}
 												?>
 											<?php endforeach ?>
 
-											<?php if ($this->session->userdata('T_ID') == $idteam ) { ?>
+											<?php if ($this->session->userdata('T_ID') == $idteam || $this->session->userdata('T_ID') == 1) { ?>
 												<?php if ($nilai == 1){
 													?>
 													<th><a id = <?php echo $idtask?> onclick="coba(this.id)" name = <?php echo $idtask?> href = "#modalStatus2" class=" modal-with-form btn btn-default btn-danger">Change Status</a></th>
@@ -115,16 +193,6 @@
 
 							<div class="panel-body">
 
-								<?php if ($this->session->userdata('T_ID') == $idteam ) { ?>
-
-									<div class="btn-group btn-group-justified">
-										<a href = "#modalForm" class=" modal-with-form btn btn-default btn-primary" role="button">Add Objective</a>
-										<!-- <button type="button" class="btn btn-default btn-primary">Primary</button> -->
-										<a href = "#modalForm2" class="modal-with-form btn btn-default btn-danger" role="button">Add Task</a>
-									</div>
-
-								<?php } ?>
-									<br>
 
 									<div id="modalStatus" class="modal-block modal-block-primary mfp-hide">
 										<section class="panel">
@@ -135,14 +203,21 @@
 												<form method="post" action="" onsubmit="test3()" id="demo-form3" class="form-horizontal mb-lg" novalidate="novalidate">
 
 													<div class="form-group mt-lg">
-														<label class="col-sm-3 control-label">Task Id</label>
+														<label class="col-sm-3 control-label">team</label>
+														<div class="col-sm-9">
+															<input type="text" name="idteam" class="form-control" readonly value="<?php echo $idteam ?>">
+														</div>
+													</div>
+
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Id</label>
 														<div class="col-sm-9">
 															<input id = "task2" value= "" type="text" name="task" readonly class="form-control" required="">
 														</div>
 													</div>
 
 													<div class="form-group mt-lg">
-														<label class="col-sm-3 control-label">Status</label>
+														<label class="col-sm-3 control-label">Progress(#)</label>
 														<div class="col-sm-9">
 															<input min="0" max="100" id = "stats" type="number" name="stats" class="form-control" placeholder="Type your status..." required="">
 														</div>
@@ -170,6 +245,12 @@
 											<div class="panel-body">
 												<form method="post" action="" onsubmit="test4()" id="demo-form4" class="form-horizontal mb-lg" novalidate="novalidate">
 
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">Team</label>
+														<div class="col-sm-9">
+															<input type="text" name="idteam" class="form-control" readonly value="<?php echo $idteam ?>">
+														</div>
+													</div>
 													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Task Id</label>
 														<div class="col-sm-9">
@@ -211,6 +292,12 @@
 											<div class="panel-body">
 												<form method="post" action="" onsubmit="test()" id="demo-form" class="form-horizontal mb-lg" novalidate="novalidate">
 													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">id</label>
+														<div class="col-sm-9">
+															<input type="text" name="idteam" class="form-control" readonly value="<?php echo $idteam?>">
+														</div>
+													</div>
+													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Objective Name</label>
 														<div class="col-sm-9">
 															<input type="text" name="objective" class="form-control" placeholder="Type your objective..." required="">
@@ -238,10 +325,17 @@
 									<div id="modalForm2" class="modal-block modal-block-primary mfp-hide">
 										<section class="panel">
 											<header class="panel-heading">
-												<h2 class="panel-title">Add Tasks</h2>
+												<h2 class="panel-title">Add Key Result</h2>
 											</header>
 											<div class="panel-body">
 												<form method="post" action="" onsubmit="test2()" id="demo-form2" class="form-horizontal mb-lg" novalidate="novalidate">
+
+													<div class="form-group mt-lg">
+														<label class="col-sm-3 control-label">ID</label>
+														<div class="col-sm-9">
+															<input type="text" name="idteam" class="form-control" readonly value="<?php echo $idteam ?>">
+														</div>
+													</div>
 
 													<div class="form-group mt-lg">
 														<label class="col-sm-3 control-label">Objective</label>
@@ -254,21 +348,20 @@
 														</div>
 													</div>
 
-
 													<div class="form-group mt-lg">
-														<label class="col-sm-3 control-label">Task Name</label>
+														<label class="col-sm-3 control-label">Key Result Name</label>
 														<div class="col-sm-9">
 															<input type="text" name="tasks" class="form-control" placeholder="Type your tasks..." required="">
 														</div>
 													</div>
 
 													<div class="form-group mt-lg">
-														<label class="col-sm-3 control-label">Project Task</label>
+														<label class="col-sm-3 control-label">Type</label>
 														<div class="col-sm-9">
 
 															<select onchange="getQ(this.value)" name = "qtask" class="form-control mb-md">
-																<option value = "Quantitati" >Quantitati</option>
-																<option value = "Qualitativ" >Qualitativ</option>
+																<option value = "Quantitative" >Quantitative</option>
+																<option value = "Qualitative" >Qualitative</option>
 															</select>
 														</div>
 
@@ -281,7 +374,7 @@
 													</div>
 												</div>
 
-													<!-- <div class="form-group">
+													<div class="form-group">
 													<label class="col-md-3 control-label">Date range</label>
 													<div class="col-md-6">
 														<div  class="input-daterange input-group" data-plugin-datepicker >
@@ -293,7 +386,7 @@
 															<input type="text" class="form-control" name="end" id="end">
 														</div>
 													</div>
-												</div> -->
+												</div>
 
 													<!-- <div class="form-group">
 														<label class="col-sm-3 control-label">Description</label>
@@ -386,7 +479,7 @@
 
 
 		function getQ(val){
-          if (val == 'Quantitati'){
+          if (val == 'Quantitative'){
             // alert("haloo");
             document.getElementById('target').readOnly = false;
           }else{
