@@ -45,6 +45,10 @@ class Divisi extends MY_MainController {
 		);
 
 		$tambah = $bobot;
+		$hit = $this->Divisi_model->setSubKr($datax,'qt_subkr',$tambah ,$kr);
+		if($hit == 0){
+			echo "<script>alert('ERROR! Max 100%')</script>";
+		}
 
 		for ($i=1; $i <= $count; $i++) {
 			$kr = $this->input->post('kr');
@@ -59,20 +63,22 @@ class Divisi extends MY_MainController {
 			'SKR_STATUS' => $s
 		);
 		$tambah = $tambah + $bobot;
-	}
 
-	if($tambah >100){
-		echo "<script>alert('ERROR! Max 100%')</script>";
-	}else{
-		$hit = $this->Divisi_model->setSubKr($datax,'qt_subkr',$tambah ,$kr);
-		if($hit == 0){
+		if($tambah >100){
 			echo "<script>alert('ERROR! Max 100%')</script>";
+		}else{
+			$hit = $this->Divisi_model->setSubKr($datax,'qt_subkr',$tambah ,$kr);
+			if($hit == 0){
+				echo "<script>alert('ERROR! Max 100%')</script>";
+			}
 		}
 
-		$redi = "dashboard";
-		redirect($redi);
 	}
 
+
+
+	$redi = "dashboard";
+	redirect($redi);
 		// $redi = "divisi/2";
 	}
 

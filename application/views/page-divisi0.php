@@ -95,15 +95,12 @@
 
 						<?php endforeach ?>
 						</div>
-
-
 						<section class="panel">
 							<header class="panel-heading">
 								<div class="panel-actions">
 									<a href="#" class="fa fa-caret-down"></a>
 									<a href="#" class="fa fa-times"></a>
 								</div>
-
 								<!-- <div> -->
 								<h2 class="panel-title">Key Results</h2>
 								<br>
@@ -134,17 +131,14 @@
 													<?php
 												}
 												?>
-
 										<?php endforeach ?>
 											<?php if ($this->session->userdata('T_ID') == $idteam || $this->session->userdata('T_ID') == 1 ) { ?>
 												<th>ACTION</th>
 											<?php } ?>
-
 										</tr>
 									</thead>
 									<tbody>
 										<?php foreach ($content->result_array() as $key): ?>
-
 
 										<tr class="gradeA">
 											<?php $nilai = 0;?>
@@ -465,7 +459,7 @@
 			 document.cookie = "myJavascriptVar =" + a;
 //			 <?php //$msg = "<script>document.write(a);</script>"; ?>
 
-					<?php //$myPhpVar= $_COOKIE['myJavascriptVar'];?>
+					<?php $myPhpVar= $_COOKIE['myJavascriptVar'];?>
 			// console.log(a);
 			// alert(a);
 		}
@@ -474,7 +468,6 @@
 
 			 document.getElementById("task2").value = a;
 			 <?php $msg = "<script>document.write(a);</script>"; ?>
-
 
 		}
 
@@ -537,9 +530,6 @@
 		// 		format: 'yyyy-mm-dd'
 		// 	});
 		// } );
-
-
-
 		</script>
 	</body>
 </html>

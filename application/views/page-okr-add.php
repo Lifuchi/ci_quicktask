@@ -122,9 +122,9 @@
 									<!-- </div> -->
 									<span id="writeroot"></span>
 
-									<div class="button" onclick="moreFields0()">
+									<div class="button">
 											<!-- <span class=""></span><span class=""> Add Subtasks</span> -->
-											<a class="btn btn-primary"> Add Subtasks</a>
+											<a onclick="moreFields0()" class="btn btn-primary"> Add Subtasks</a>
 									</div>
 									<br>
 
