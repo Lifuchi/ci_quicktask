@@ -70,7 +70,7 @@ class Divisi extends MY_MainController {
 		if($hit == 0){
 			echo "<script>alert('ERROR! Max 100%')</script>";
 		}
-		
+
 		$redi = "dashboard";
 		redirect($redi);
 	}

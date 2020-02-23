@@ -98,7 +98,7 @@ class Okr extends MY_MainController {
 				'SKR_STATUS' => $status
 				);
 
-		$this->Okr_model->updateSubTask($data, 'QT_SUBKR' , $kr);
+		$this->Okr_model->updateSubTask($data, 'qt_subkr' , $kr);
 		// sleep(1);
 
 		$hit = $this->Okr_model->getSbt($t)->result_array();
@@ -113,7 +113,7 @@ class Okr extends MY_MainController {
 			'KR_UPDATE' => $akhir
 			);
 
-		$this->Okr_model->updateTask($datax, 'QT_KEYRESULT' , $t);
+		$this->Okr_model->updateTask($datax, 'qt_keyresult' , $t);
 
 		// redirect('dashboard');
 		$redi = "divisi/".$team;
