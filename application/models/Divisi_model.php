@@ -93,12 +93,20 @@ WHERE kr.`OBJECTIVE_ID` = ? AND kr.`KR_TYPE` = 'Qualitative' ";
 
 	}
 
-	public function setSubKr($datax , $table){
-		$query = "SELECT	KR_NAME , KR_ID
-		FROM QT_KEYRESULT kr
-		WHERE kr.`OBJECTIVE_ID` = ? AND kr.`KR_TYPE` = 'Qualitative'";
+	public function setSubKr($datax , $table , $tambah ,$id){
+
+		$query = "SELECT	SUM(sk.SKR_BOBOT) AS 'status' FROM QT_SUBKR sk WHERE KR_ID = ?";
+		$data = $this->db->query($query, $id);
+		$data = $data->row()->status;
+
+		$tambah = $tambah + $data;
+
+		if($tambah > 100){
+			return 0;
+		}else{
+			$this->db->insert($table, $datax);
+		}
 		// $data = $this->db->query($query, $id);
-		$this->db->insert($table, $datax);
 		// return $data;
 
 	}

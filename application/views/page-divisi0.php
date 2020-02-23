@@ -252,7 +252,7 @@
 														</div>
 													</div>
 													<div class="form-group mt-lg">
-														<label class="col-sm-3 control-label">Task Id</label>
+														<label class="col-sm-3 control-label">Key Result Id</label>
 														<div class="col-sm-9">
 															<input id=task type="text" name="task" readonly class="form-control" required="">
 														</div>
@@ -263,10 +263,10 @@
 														<div class="col-sm-9">
 															<select  name = "stats" class="form-control mb-md">
 																<option value = 0 > To Do</option>
+																<!-- <option value = 1 > On Doing</option> -->
 																<option value = 100 >Done</option>
 															</select>
 														</div>
-
 													</div>
 
 											</div>
@@ -408,6 +408,8 @@
 									</div>
 							</div>
 						</section>
+
+						
 
 					</div>
 

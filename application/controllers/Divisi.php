@@ -34,7 +34,7 @@ class Divisi extends MY_MainController {
 
 	public function addSubTask($count)
 	{
-
+		$tambah =0;
 		$kr = $this->input->post('kr');
 		$st = $this->input->post('subtask');
 		$bobot = $this->input->post('persentage');
@@ -45,6 +45,8 @@ class Divisi extends MY_MainController {
 			'SKR_BOBOT' => $bobot,
 			'SKR_STATUS' => $s
 		);
+
+		$tambah = $bobot;
 
 		for ($i=1; $i <= $count; $i++) {
 			$kr = $this->input->post('kr');
@@ -58,14 +60,22 @@ class Divisi extends MY_MainController {
 			'SKR_BOBOT' => $bobot,
 			'SKR_STATUS' => $s
 		);
+		$tambah = $tambah + $bobot;
 	}
 
-	$this->Divisi_model->setSubKr($datax,'QT_SUBKR');
-		// $redi = "divisi/2";
+	if($tambah >100){
+		echo "<script>alert('ERROR! Max 100%')</script>";
+	}else{
+		$hit = $this->Divisi_model->setSubKr($datax,'QT_SUBKR',$tambah ,$kr);
+		if($hit == 0){
+			echo "<script>alert('ERROR! Max 100%')</script>";
+		}
+		
 		$redi = "dashboard";
-
 		redirect($redi);
+	}
 
+		// $redi = "divisi/2";
 	}
 
   // public function added()
