@@ -54,9 +54,7 @@ WHERE te.T_ID > 1";
 	}
 
 	public function getTeam(){
-		$query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN
-		FROM qt_team te
-		where te.T_ID > 1 ";
+		$query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN FROM qt_team te where te.T_ID > 1 ";
 		$data = $this->db->query($query);
 		return $data;
 

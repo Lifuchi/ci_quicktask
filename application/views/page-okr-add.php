@@ -62,7 +62,9 @@
 										<a href="#" class="fa fa-caret-down"></a>
 										<a href="#" class="fa fa-times"></a>
 									</div>
-									<h2 class="panel-title">Add Subtask</h2>
+									<h2 class="panel-title">Add Subtask </h2>
+
+									<h5 >Maximum total percent is 100 </h5>
 								</header>
 								<div class="panel-body">
 
