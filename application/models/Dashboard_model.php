@@ -15,22 +15,22 @@ class Dashboard_model extends CI_Model {
   }
 
 	public function getProgressBar(){
-		$query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN, SUM(t.`TA_STATUS`) AS done  ,COALESCE(COUNT(t.`TA_STATUS`))*100 AS alls
-		FROM qt_team te
-		LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
-		LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
-		WHERE te.T_ID > 0
-		GROUP BY (te.`T_ID`)";
+		$query = "SELECT te.T_ID, te.T_NAME ,te.T_USER, te.T_SINGKATAN, SUM(t.`KR_STATUS`) AS done  ,COALESCE(COUNT(t.`KR_STATUS`))*100 AS alls
+FROM qt_team te
+LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
+LEFT JOIN qt_keyresult t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
+WHERE te.T_ID > 1
+GROUP BY (te.`T_ID`)";
 		$data = $this->db->query($query);
 		return $data;
 	}
 
 	public function getNetworkOverall(){
-		$query = "SELECT SUM(t.`TA_STATUS`) AS done   ,COALESCE(COUNT(t.`TA_STATUS`))*100 AS alls
-		FROM qt_team te
-		LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
-		LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
-		WHERE te.T_ID > 0";
+		$query = "SELECT SUM(t.`KR_STATUS`) AS done   ,COALESCE(COUNT(t.`KR_STATUS`))*100 AS alls
+FROM qt_team te
+LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID`
+LEFT JOIN qt_keyresult t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
+WHERE te.T_ID > 1";
 		$data = $this->db->query($query);
 		return $data;
 	}
@@ -43,12 +43,13 @@ class Dashboard_model extends CI_Model {
 // LEFT JOIN qt_task t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID`
 // WHERE te.T_ID > 0
 // GROUP BY (o.`OBJECTIVE_ID`)";
-$query = "SELECT o.`OBJECTIVE_ID` , o.`OBJECTIVE`
-FROM qt_team te
-JOIN QT_OBJECTIVE o ON te.`T_ID` = o.`T_ID`
-where te.T_ID = ? ";
-$data = $this->db->query($query, $id);
-return $data;
+// $query = "SELECT o.`OBJECTIVE_ID` , o.`OBJECTIVE`
+// FROM qt_team te
+// JOIN QT_OBJECTIVE o ON te.`T_ID` = o.`T_ID`
+// where te.T_ID = ? ";
+	$query = "SELECT te.T_NAME ,te.T_USER, te.T_SINGKATAN,o.`OBJECTIVE` , SUM(t.`KR_STATUS`) AS persendone , COALESCE(COUNT(t.`KR_STATUS`))*100 AS persenalls ,COALESCE(COUNT(IF(t.`KR_STATUS`= 100 ,1 , NULL))) AS done  ,COALESCE(COUNT(t.`KR_STATUS`)) AS alls FROM qt_team te LEFT JOIN qt_objective o ON te.T_ID = o.`T_ID` LEFT JOIN qt_keyresult t ON o.`OBJECTIVE_ID` = t.`OBJECTIVE_ID` WHERE te.T_ID = ? GROUP BY (o.`OBJECTIVE_ID`)";
+	$data = $this->db->query($query, $id);
+	return $data;
 
 	}
 

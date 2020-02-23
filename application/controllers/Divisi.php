@@ -21,32 +21,70 @@ class Divisi extends MY_MainController {
     $this->load->view('page-divisi0' , $get);
   }
 
-  public function add()
+  public function addSubTaskView($id)
   {
     // $this->load->view('welcome_message');
-    // $this->load->view('page-okr-add');
+		$get['contentobjective'] = $this->Divisi_model->getListObjective($id);
+		$get['contensubtask'] = $this->Divisi_model;
+
+		// $get['contentkeyfeature'] = $this->Divisi_model->getListObjective($id);
+
+    $this->load->view('page-okr-add', $get);
   }
 
-  public function added()
-  {
-    $o = $this->input->post('objective');
-    $team = $this->session->userdata('T_ID');
+	public function addSubTask($count)
+	{
+		$kr = $this->input->post('kr');
+		$st = $this->input->post('subtask');
+		$bobot = $this->input->post('persentage');
+		$s = 0;
+		$datax = array(
+			'KR_ID' => $kr,
+			'SKR_NAME' => $st,
+			'SKR_BOBOT' => $bobot,
+			'SKR_STATUS' => $s
+		);
 
-    $start = $this->input->post('start');
-    $end = $this->input->post('end');
+		for ($i=1; $i <= $count; $i++) {
+			$kr = $this->input->post('kr');
+			$st = $this->input->post('subtask'.$i);
+			$bobot = $this->input->post('persentage'.$i);
+			$s = 0;
 
-    // $namav = $this->input->post('Key Feature');
-    // $namav = $this->input->post('Activity');
-		$data = array(
-			'OBJECTIVE' => $o,
-      'T_ID' => $team
-			// 'Key Feature' => $kf,
-			// 'Activity' => $a
-			);
-		$this->Okr_model->insert($data, 'qt_objective');
-		// redirect('dashboard');
-    redirect('okr/add');
+		$datax = array(
+			'KR_ID' => $kr,
+			'SKR_NAME' => $st,
+			'SKR_BOBOT' => $bobot,
+			'SKR_STATUS' => $s
+		);
+		$this->Divisi_model->setSubKr($datax,'QT_SUBKR');
+	}
 
-  }
+		// $redi = "divisi/2";
+		// redirect($redi);
+
+	}
+
+  // public function added()
+  // {
+  //   $o = $this->input->post('objective');
+  //   // $team = $this->session->userdata('T_ID');
+	// 	$team = $this->input->post('idteam');
+  //   $start = $this->input->post('start');
+  //   $end = $this->input->post('end');
+	//
+  //   // $namav = $this->input->post('Key Feature');
+  //   // $namav = $this->input->post('Activity');
+	// 	$data = array(
+	// 		'OBJECTIVE' => $o,
+  //     'T_ID' => $team
+	// 		// 'Key Feature' => $kf,
+	// 		// 'Activity' => $a
+	// 		);
+	// 	$this->Okr_model->insert($data, 'qt_objective');
+	// 	// redirect('dashboard');
+  //   redirect('okr/add');
+	//
+  // }
 
 }

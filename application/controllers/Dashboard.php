@@ -20,7 +20,7 @@ class Dashboard extends MY_MainController {
 		// $doneact = $this->Dashboard_model->doneActivity();
 		$data['content'] =  $this->Dashboard_model->getProgressBar();
 		$data['network'] =  $this->Dashboard_model->getNetworkOverall();
-		$data['objective'] =  $this->Dashboard_model->getObjective();
+		// $data['objective'] =  $this->Dashboard_model->getObjective();
 
 		// $data['all'] = $allact;
 		// $data['done'] = $doneact;

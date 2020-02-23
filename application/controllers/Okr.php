@@ -26,8 +26,8 @@ class Okr extends MY_MainController {
   {
     $o = $this->input->post('objective');
 		$desc = $this->input->post('desc');
-    $team = $this->session->userdata('T_ID');
-
+    // $team = $this->session->userdata('T_ID');
+		$team = $this->input->post('idteam');
     // $start = $this->input->post('start');
     // $end = $this->input->post('end');
     // $namav = $this->input->post('Key Feature');
@@ -53,7 +53,8 @@ class Okr extends MY_MainController {
 		$start = $this->input->post('start');
 		$end = $this->input->post('end');
 
-		$team = $this->session->userdata('T_ID');
+		// $team = $this->session->userdata('T_ID');
+		$team = $this->input->post('idteam');
 		$s = 0;
 
 		// $start = $this->input->post('start');
@@ -83,8 +84,9 @@ class Okr extends MY_MainController {
 	public function taskupdated()
 	{
 		$t = $this->input->post('task');
+		$team = $this->input->post('idteam');
 		$status= $this->input->post('stats');
-		$team = $this->session->userdata('T_ID');
+		// $team = $this->session->userdata('T_ID');
 		// $target = $this->Okr_model->findTarget('qt_task' , $t);
 		$akhir = date("Y-m-d h:i:sa");
 		$data = array(
@@ -102,7 +104,8 @@ class Okr extends MY_MainController {
 	{
 		$t = $this->input->post('task');
 		$status= $this->input->post('stats');
-		$team = $this->session->userdata('T_ID');
+		// $team = $this->session->userdata('T_ID');
+		$team = $this->input->post('idteam');
 		$target = $this->Okr_model->findTarget('qt_keyresult' , $t)->result_array();
 		foreach($target as $row){
 					$result['KR_TARGET'] = $row['KR_TARGET'];

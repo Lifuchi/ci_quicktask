@@ -62,9 +62,12 @@ $route['okr/taskadded'] = 'okr/taskadded';
 $route['okr/taskupdated'] = 'okr/taskupdated';
 $route['okr/taskupdated2'] = 'okr/taskupdated2';
 
+$route['okr/taskupdated2'] = 'okr/taskupdated2';
+
+$route['subtask/added/(:any)'] = 'divisi/addSubTask/$1';
 
 $route['divisi/(:any)'] = 'divisi/index/$1';
-
+$route['divisiadd/(:any)'] = 'divisi/addSubTaskView/$1';
 
 // $route['ht'] = 'dashboard/allActivity';
 // $route['ht2'] = 'dashboard/doneActivity';

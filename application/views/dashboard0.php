@@ -41,7 +41,7 @@
 										<i class="fa fa-home"></i>
 									</a>
 								</li>
-								<li><span>Dashboard</span></li>
+								<li><span>Overall Objective</span></li>
 							</ol>
 
 							<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fa fa-chevron-left"></i></a>
@@ -63,11 +63,11 @@
 									 <?php $count = $objective->getObjective($row['T_ID'])->result_array(); ?>
 									 <?php foreach ($count as $key): ?>
 								 <?php
-								 // if($key['done']== 0 && $key['alls'] == 0 ){
+								  if($key['done']== 0 && $key['alls'] == 0 ){
 									 $ht = 0;
-								 // }else{
-								 // 	$ht = round((int)$key['done']/(int)$key['alls']*100,2);
-								 // }
+								  }else{
+								  	$ht = round((int)$key['persendone']/(int)$key['persenalls']*100,2);
+								  }
 								 ?>
 
 								 <!-- <br> -->
@@ -78,14 +78,14 @@
 										<h4 class="text-semibold mt-sm text-center" style="height:50px" > <?php echo $key['OBJECTIVE']?></h4>
 										<div class="panel-body" >
 											<div id='progressbar' class="progress light">
-												<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php //echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
-															<?php //echo $ht ?>%
+												<div id='progressbar2' class="progress-bar progress-bar-primary" role="progressbar"  aria-valuenow="<?php echo $ht;?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $ht;?>%">
+															<?php echo $ht ?>%
 												</div>
 											</div>
 											<div class="row show-grid" style="height:90px">
-												<div class="col-md-4"><span class="show-grid-block"><h5>Target</h5> <h3><?php// echo $key['alls']?></h3></span></div>
-												<div class="col-md-4"><span class="show-grid-block"><h5>In Progress</h5> <h3><?php //echo ((int)$key['alls']- (int)$key['done'])?></h3></span></div>
-												<div class="col-md-4"><span class="show-grid-block"><h5>Completed</h5> <h3><?php //echo $key['done']?></h3></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>Target</h5> <h3><?php echo $key['alls']?></h3></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>In Progress</h5> <h3><?php echo ((int)$key['alls']- (int)$key['done'])?></h3></span></div>
+												<div class="col-md-4"><span class="show-grid-block"><h5>Completed</h5> <h3><?php echo $key['done']?></h3></span></div>
 											</div>
 										</div >
 
