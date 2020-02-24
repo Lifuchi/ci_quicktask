@@ -13,19 +13,11 @@
 
 				<?php $this->load->view("_partials/header.php") ?>
 
-
-
 				<!-- start: search & user box -->
 				<div class="header-right">
-
-
-
 					<span class="separator"></span>
-
-
 					<span class="separator"></span>
 					<?php $this->load->view("_partials/navbar.php") ?>
-
 
 				</div>
 				<!-- end: search & user box -->
