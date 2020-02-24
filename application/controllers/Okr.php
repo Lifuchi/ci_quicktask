@@ -82,10 +82,10 @@ class Okr extends MY_MainController {
 	}
 
 //Qualitative
-	public function taskupdated()
+	public function taskupdated($idkr , $idteam)
 	{
-		$t = $this->input->post('task');
-		$team = $this->input->post('idteam');
+		// $t = $this->input->post('task');
+		// $team = $this->input->post('idteam');
 		$status= $this->input->post('stats');
 		$kr = $this->input->post('st');
 
@@ -101,7 +101,7 @@ class Okr extends MY_MainController {
 		$this->Okr_model->updateSubTask($data, 'qt_subkr' , $kr);
 		// sleep(1);
 
-		$hit = $this->Okr_model->getSbt($t)->result_array();
+		$hit = $this->Okr_model->getSbt($idkr)->result_array();
 		foreach($hit as $row){
 			$result['STATUS'] = $row['STATUS'];
 		}
@@ -113,10 +113,11 @@ class Okr extends MY_MainController {
 			'KR_UPDATE' => $akhir
 			);
 
-		$this->Okr_model->updateTask($datax, 'qt_keyresult' , $t);
+		$this->Okr_model->updateTask($datax, 'qt_keyresult' , $idkr);
 
 		// redirect('dashboard');
-		$redi = "divisi/".$team;
+		$redi = "divisi/".$idteam;
+
 		redirect($redi);
 
 	}

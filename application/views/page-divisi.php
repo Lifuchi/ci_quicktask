@@ -2,31 +2,17 @@
 <html class="fixed sidebar-left-collapsed">
 	<head>
 		<?php $this->load->view("_partials/head.php") ?>
-
 	</head>
 	<body>
 		<section class="body">
-
 			<!-- start: header -->
-
 			<header class="header">
-
 				<?php $this->load->view("_partials/header.php") ?>
-
-
-
 				<!-- start: search & user box -->
 				<div class="header-right">
-
-
-
 					<span class="separator"></span>
-
-
 					<span class="separator"></span>
 					<?php $this->load->view("_partials/navbar.php") ?>
-
-
 				</div>
 				<!-- end: search & user box -->
 			</header>
@@ -38,16 +24,14 @@
 				<!-- isinya -->
 				<section role="main" class="content-body">
 					<header class="page-header">
-						<?php foreach ($contentname->result_array() as $key): ?>
-						<h2><?php echo $key['T_NAME'] ?></h2>
-							<?php endforeach ?>
+						<h2>Change Status </h2>
 
 						<div class="right-wrapper pull-right">
 							<ol class="breadcrumbs">
 								<li>
-									<a href=<?php echo site_url('okr');?>>
+									<!-- <a href=<?php //echo site_url('okr');?>>
 										<i class="fa fa-home"></i>
-									</a>
+									</a> -->
 								</li>
 								<li><span>Divisi</span></li>
 							</ol>
@@ -58,88 +42,65 @@
 
 					<div class="row">
 
-					<?php foreach ($content->result_array() as $key): ?>
-						<div class="col-xl-3 col-lg-6">
-							<section class="panel panel-transparent">
+						<div id="modalStatus2">
+							<section class="panel">
 								<header class="panel-heading">
-									<div class="panel-actions">
-										<a href="#" class="fa fa-caret-down"></a>
-										<a href="#" class="fa fa-times"></a>
-									</div>
-
-									<h2 class="panel-title"></h2>
+									<h2 class="panel-title">Change Status</h2>
 								</header>
 								<div class="panel-body">
-									<section class="panel panel-group">
-										<header class="panel-heading bg-primary">
-											<div class="widget-profile-info">
-												<div class="profile-info">
-													<h4 class="name text-semibold"><?php echo $key['OBJECTIVE']?></h4>
-													<!-- <h5 class="role">Administrator</h5> -->
-													<div class="profile-footer">
-														<a href="#">(edit profile)</a>
-													</div>
-												</div>
+									<form method="post" action="" onsubmit="test4()" id="demo-form4" class="form-horizontal mb-lg" novalidate="novalidate">
+
+										<!-- <div class="form-group mt-lg">
+											<label class="col-sm-3 control-label">Team</label>
+											<div class="col-sm-9">
+												<input type="text" name="idteam" class="form-control" readonly value="<?php echo $idteam ?>">
 											</div>
+										</div> -->
 
-										</header>
-										<div id="accordion">
-											<div class="panel panel-accordion panel-accordion-first">
-												<div class="panel-heading">
-													<h4 class="panel-title">
-														<?php $idne = "collapse".$key['OBJECTIVE_ID']?>
-														<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#<?php echo $idne?>">
-															<i class="fa fa-check"></i> Tasks
-														</a>
-													</h4>
-												</div>
-												<div id="<?php echo $idne?>" class="accordion-body collapse in">
-													<div class="panel-body">
-														<ul class="widget-todo-list">
-
-															<?php $count = $contentask->getTasks($key['T_ID'],$key['OBJECTIVE_ID'])->result_array();
-															foreach($count as $row){  ?>
-
-															<li>
-																<div>
-																	<!-- <input type="checkbox" checked="" id="todoListItem1" class="todo-check"> -->
-																	<label class="todo-label" for="todoListItem1">
-
-																		<span><?php echo $row['TA_NAME']?></span>
-																	</label>
-																</div>
-																<!-- <div class="todo-actions">
-																	<a class="todo-remove" href="#">
-																		<i class="fa fa-times"></i>
-																	</a>
-																</div> -->
-															</li>
-														<?php } ?>
-														</ul>
-														<hr class="solid mt-sm mb-lg">
-														<!-- <form method="get" class="form-horizontal form-bordered"> -->
-															<!-- <div class="form-group"> -->
-																<!-- <div class="col-sm-12"> -->
-																	<!-- <div class="input-group mb-md"> -->
-																		<!-- <input type="text" class="form-control"> -->
-																		<!-- <div class="input-group-btn"> -->
-																			<!-- <button type="button" class="btn btn-primary" tabindex="-1">Add</button> -->
-																		<!-- </div> -->
-																	<!-- </div> -->
-																<!-- </div> -->
-															<!-- </div> -->
-														<!-- </form> -->
-													</div>
-												</div>
+										<!-- <div class="form-group mt-lg">
+											<label class="col-sm-3 control-label">Key Result Id</label>
+											<div class="col-sm-9">
+												<input id=task type="text" name="task" readonly class="form-control" required="">
 											</div>
+										</div> -->
 
+										<div class="form-group mt-lg">
+											<label class="col-sm-3 control-label">SubTask</label>
+											<div class="col-sm-9">
+												<select name = "st" class="form-control populate">
+													<option >Choose</option>
+													<?php foreach ($contentask->result_array() as $keys): ?>
+															<option value ="<?php echo $keys['SKR_ID'];?>"><?php echo $keys['SKR_NAME'];?></option>
+													<?php endforeach ?>
+												</select>
+											</div>
 										</div>
-									</section>
+
+
+										<div class="form-group mt-lg">
+											<label class="col-sm-3 control-label">Status</label>
+											<div class="col-sm-9">
+												<select  name = "stats" class="form-control mb-md">
+													<option value = 0 > To Do</option>
+													<option value = 10 > On Doing</option>
+													<option value = 100 >Done</option>
+												</select>
+											</div>
+										</div>
 
 								</div>
+								<footer class="panel-footer">
+									<div class="row">
+										<div class="col-md-12 text-right">
+											<button id="buu" type="submit" class="btn btn-primary">Submit</button>
+											<button class="btn btn-default modal-dismiss">Cancel</button>
+										</div>
+									</div>
+								</footer>
+							</form>
 							</section>
 						</div>
-					<?php endforeach ?>
+
 
 					</div>
 
@@ -157,4 +118,18 @@
 
 
 	</body>
+
+<script>
+function test4(){
+	 var pathArray = window.location.pathname.split( "/" );
+	 var hrf = "<?php echo base_url('okr/taskupdated/');?>"+pathArray[4]+ "/" + pathArray[5];
+	// alert("Data Masuk");
+	// var href = document.getElementById("myBtn").value;
+	//alert(hrf);
+	 // alert('<?php //echo base_url('okr/taskupdated/');?>'+pathArray[4]'');
+		var x = document.getElementById('demo-form4').action = hrf;
+		// alert(x);
+
+}
+</script>
 </html>

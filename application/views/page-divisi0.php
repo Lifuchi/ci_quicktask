@@ -166,7 +166,7 @@
 											<?php if ($this->session->userdata('T_ID') == $idteam || $this->session->userdata('T_ID') == 1) { ?>
 												<?php if ($nilai == 1){
 													?>
-													<th><a id = <?php echo $idtask?> onclick="coba(this.id)" name = <?php echo $idtask?> href = "#modalStatus2" class=" modal-with-form btn btn-default btn-danger">Change Status</a></th>
+													<th><a id = <?php echo $idtask?> onclick="coba(this.id)" name = <?php echo $idtask?>  class=" btn btn-default btn-danger">Change Status</a></th>
 													<?php
 												}else{
 													?>
@@ -423,8 +423,6 @@
 				</section>
 			</div>
 
-
-
 <!-- tes -->
 			<?php $this->load->view("_partials/sidebar.php") ?>
 
@@ -455,11 +453,14 @@
 
 		function coba(a){
 
+			// document.getElementById("task").href = '<?php //site_url("changestatustask/")?>'+a;
 			 document.getElementById("task").value = a;
-			 document.cookie = "myJavascriptVar =" + a;
-//			 <?php //$msg = "<script>document.write(a);</script>"; ?>
 
-					<?php $myPhpVar= $_COOKIE['myJavascriptVar'];?>
+			 // console.log('<?php echo base_url()?>subtask/changestatustask/'+a+'/<?php echo $idteam;?> ');
+			  window.location.replace('<?php echo base_url()?>subtask/changestatustask/'+a+'/<?php echo $idteam;?> ');
+			 // document.cookie = "myJavascriptVar =" + a;
+//			 <?php //$msg = "<script>document.write(a);</script>"; ?>
+					<?php //$myPhpVar= $_COOKIE['myJavascriptVar'];?>
 			// console.log(a);
 			// alert(a);
 		}

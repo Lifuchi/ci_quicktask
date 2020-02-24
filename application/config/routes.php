@@ -65,6 +65,7 @@ $route['okr/taskupdated2'] = 'okr/taskupdated2';
 $route['okr/taskupdated2'] = 'okr/taskupdated2';
 
 $route['subtask/added/(:any)'] = 'divisi/addSubTask/$1';
+$route['subtask/changestatustask/(:any)/(:any)'] = 'divisi/changeStatus/$1/$2';
 
 $route['divisi/(:any)'] = 'divisi/index/$1';
 $route['divisiadd/(:any)'] = 'divisi/addSubTaskView/$1';
