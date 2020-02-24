@@ -62,7 +62,11 @@ class Okr extends MY_MainController {
 		// $namav = $this->input->post('Key Feature');
 		// $namav = $this->input->post('Activity');
 		// $d=mktime(11, 14, 54, 8, 12, 2014);
-		$akhir = date("Y-m-d h:i:sa");
+		// $akhir = date("Y-m-d h:i:sa");
+		$start = date("Y-m-d", strtotime($start));
+		$end = date("Y-m-d", strtotime($end));
+
+
 		$data = array(
 			'OBJECTIVE_ID' => $o,
 			'KR_NAME' => $t,

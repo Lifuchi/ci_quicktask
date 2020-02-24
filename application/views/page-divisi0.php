@@ -388,9 +388,9 @@
 															<span class="input-group-addon">
 																<i class="fa fa-calendar"></i>
 															</span>
-															<input type="text" class="form-control" name="start" id="start">
+															<input data-date-format="DD MMMM YYYY"  class="form-control" name="start" id="start">
 															<span class="input-group-addon">to</span>
-															<input type="text" class="form-control" name="end" id="end">
+															<input  class="form-control" name="end" id="end">
 														</div>
 													</div>
 												</div>
